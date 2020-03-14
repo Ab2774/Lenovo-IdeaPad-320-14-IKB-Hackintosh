@@ -41,7 +41,7 @@ This laptop is a budget laptop, By these specs, You can't do some heavy work, Ba
 - Mouse, Because trackpad won't work in the installation 
 
 # BIOS Configuration
-Before doing anything, Remember to update your BIOS to the latest version, Preparing your machine to macOS, Reboot your laptop, When the Lenovo logos appear press <b>F2</b>, When the BIOS menu appears go to: 
+Before doing anything, Remember to update your BIOS to the latest version, Preparing your machine to macOS, Reboot your laptop, When the Lenovo logo's appear press <b>F2</b>, When the BIOS menu appears go to: 
 - "Configuration" <b>SATA Controller Mode</b> to <b>AHCI</b>, <b>HotKey Mode</b> to <b>Enabled</b>.
 - "Security" <b>Intel Platform Trust Technology</b> to <b>Disabled</b>, <b>Intel SGX</b> to <b>Disabled</b>, <b>Secure Boot</b> to <b>Disabled</b>.
 - "Boot" <b>Boot Mode</b> to <b>UEFI</b>,<b>Fast Boot</b> to <b>Disabled</b>, <b>USB Boot</b> to <b>Enabled</b>.
