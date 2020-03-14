@@ -1,6 +1,6 @@
 # Lenovo-Ideapad-320-14IKB (80XK)
 A guide for installing macOS Catalina on Lenovo IdeaPad 320-14IKB (Kaby Lake-U)
-(Check Tonymacx86 discussion from [here](https://www.tonymacx86.com/threads/guide-lenovo-ideapad-320-14ikb-clover-uefi-hotpatch.293387/).
+(Check Tonymacx86 discussion from [here](https://www.tonymacx86.com/threads/guide-lenovo-ideapad-320-14ikb-clover-uefi-hotpatch.293387/)).
 ![](Images/Laptop.png)
 
 
