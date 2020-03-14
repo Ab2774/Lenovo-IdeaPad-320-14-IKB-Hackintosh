@@ -19,7 +19,7 @@ I'm not an expert in hackintoshing, This is my first Hackintosh, I managed to ge
 # Overview 
 This laptop is a budget laptop, By these specs, You can't do some heavy work, Battery life is around 2-3 hours, Its good but not the best, If you want more you can choose higher specs, But consider that this guide may be different for your hardware.
 
-# What's Wokrking?
+# What's Wokring?
 - Intel HD 620 Graphics full QE/CI 
 - CPU power management 
 - Realtek Ethernet 
