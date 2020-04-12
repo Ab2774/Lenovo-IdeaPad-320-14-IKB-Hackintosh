@@ -72,11 +72,11 @@ This is gonna fix sleep for your laptop, unzip the folder `ALCPlugFix` and run `
 Restart, and you're ready to go!
 
 # Extras
-- After you finished the installation you'll notice that your iMessage and other Apple services arent working! to fix that issue you have to add 'ROM', 'MLB' and a proper SMBIOS (which is MacBookPro14,1 for this device) in your 'config.plist', for more informaiton follow this guide from [here](https://www.tonymacx86.com/threads/an-idiots-guide-to-imessage.196827/).
+- After you finished the installation you'll notice that your iMessage and other Apple services aren't working! to fix that issue you have to add `ROM`, `MLB` and a proper SMBIOS (which is MacBookPro14,1 for this device) in your `config.plist`, for more information follow this guide from [here](https://www.tonymacx86.com/threads/an-idiots-guide-to-imessage.196827/).
 - If you don't like the name of your laptop that shown in "About This Mac", you can change it! Press Shift+Cmd+G (⇧⌘G) and copy-and-paste this path: `/Users/Username/Library/Preferences/com.apple.SystemProfiler.plist`, and remember, The word `Username` Is for your username, now download your favorite plist editor (mine is "PilstEdit Pro"), then you can change to `Lenovo IdeaPad 320-14IKB (80XK)` or any name you want.
 ![](Images/Edit.png)
 ![](Images/About_This_Mac.png)
-- VoodooPS2Contoller recognize `Alt` key as `Command` and `Win` key as `Option` for some-reaason, if you want to fix this issue use `SSDT-Swap-Cmd-Alt` in the ACPI folder, also, the key "PrtSc" can be remapped from disabling trackpad to take screenshots and record videos, use `SSDT-PrtSC-F13` for remapping it to "F13",but if you want to use both of them, use `SSDT-PS2K`, if you don't want anything to change, you can delete it.
+- VoodooPS2Contoller recognize `Alt` key as `Command` and `Win` key as `Option` for some-reason, if you want to fix this issue use `SSDT-Swap-Cmd-Alt` in the ACPI folder, also, the key "PrtSc" can be remapped from disabling trackpad to take screenshots and record videos, use `SSDT-PrtSC-F13` for remapping it to "F13", but if you want to use both of them, use `SSDT-PS2K`, if you don't want anything to change, you can delete it.
 ![](Images/Keyboard.png)
 ![](Images/Remap.png)
 - Who needs CDs these days? You can buy this caddy and replace it with the CD Drive from [here](https://www.aliexpress.com/item/32850001303.html) to get dual drives.
@@ -91,7 +91,7 @@ Restart, and you're ready to go!
 ![](Images/Auto2.png)
 - If you want to get these option to choose the resolution like this you can! by running this command which can be found [here](https://github.com/xzhih/one-key-hidpi), type your password and choose the numbers 1,3,1 then restart.
 ![](Images/HiDPI.png)
-- If you don't like the deafult Clover you can change it! Search the web and choose your favorite theme, copy-and-paste it to 'themes' in 'EFI' folder, then go to your 'config.plist', 'GUI' section, 'Theme' and type the name of your theme, you can use 'Clover OSS Theme', which looks like a real Mac boot-up screen. 
+- If you don't like the default Clover you can change it! Search the web and choose your favorite theme, copy-and-paste it to `themes` in `EFI` folder, then go to your `config.plist`, `GUI` section, `Theme` and type the name of your theme, you can use `Clover OSS Theme`, which looks like a real Mac boot-up screen. 
 ![](Images/Themes.png)
 
 # Credits
