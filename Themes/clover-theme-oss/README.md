@@ -3,7 +3,7 @@
 
 Mac-style theme for Clover (originally by [lisai9093](https://github.com/lisai9093)).
 
-![](Images/screenshot.png)
+![](Images/Screenshot.png)
 
 # Installation
 Download the release ZIP file of this repository to your Clover theme directory (usually
