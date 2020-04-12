@@ -10,7 +10,7 @@ Download the release ZIP file of this repository to your Clover theme directory 
 in EFI/CLOVER/themes, located on the EFI system partition). Then, edit your
 Clover config.plist to select the theme.
 
-![](Images/theme.png)
+![](Images/Theme.png)
 
 
 ````plist
