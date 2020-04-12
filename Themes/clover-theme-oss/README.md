@@ -12,15 +12,6 @@ Clover config.plist to select the theme.
 
 ![](Images/Theme.png)
 
-
-````plist
-<key>GUI</key>
-<dict>
-	<key>Theme</key>
-	<string>clover-theme-oss</string>
-</dict>
-````
-
 # Credits
 - [Apple](https://www.apple.com) for macOS.
 - [al3xtjames](https://github.com/al3xtjames) for the original theme.
