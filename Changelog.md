@@ -29,7 +29,7 @@
 - Added `SSDT-DMAC`, `SSDT-MEM2`, `SSDT-PMCR`, `SSDT-HPET`, `SSDT-Swap-Cmd-Alt` and `SSDT-ALS0` to be more like a real Mac
 - Added `SSDT-PS2K` for swapping Cmd and Alt and remap PrtSc to F13 together 
 - Added `SSDT-KBD` instead of `SSDT-PS2K` for brightness keys
-- Added better clover theme (clover-theme-oss)
+- Added better clover theme `clover-theme-oss`
 - Removed `CodecCommander` from  `/Volumes/EFI/EFI/CLOVER/kexts/Other`  to  `/Library/Extensions`
 - Removed `HDAS to HDEF` and `HECI to IMEI` patch in `config.plist` becuase it's no longer needed
 - Removed `change TPD0._DSM to XDSM` patch in `config.plist` becuase it's no longer needed
@@ -37,7 +37,7 @@
 - Removed `AddPNLF` in `config.plist` And replaced  with  `SSDT-PNLF` and `SSDT-ALSO` and for better brightness 
 - Removed `FixRegion` in `config.plist` becuase it's no longer needed
 - Removed  `NoOemTabeld` and  `NoDynamicExtract` SSDT in `config.plist` because it's no longer needed
-- Removed Halt Enabler and FixHeaders in `config.plist` because it's no longer needed
+- Removed `Halt Enabler` and `FixHeaders` in `config.plist` because it's no longer needed
 - Removed `RtcHibernateAware` and `SkipHibernateTimeout` and replace with `NeverHibernate` for better sleep and power management 
 - Removed `Add ClockID` in `USB` in `config.plist` because it's no longer needed
 - Removed `Kernel LAPIC` in `Kernel and Kexts Patches` in `config.plist` because it's no longer needed
