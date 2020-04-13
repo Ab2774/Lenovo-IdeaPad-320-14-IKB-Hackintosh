@@ -89,7 +89,7 @@ Restart, and you're ready to go!
 - You can make your laptop boots automatic to macOS if you don't have another OS installed as shown in the photos, type your drive's name, check `Fast` and check `Auto=Yes`, now your laptop should boot automatically to macOS without the `Clover Boot Menu`.
 ![](Images/Auto1.png)
 ![](Images/Auto2.png)
-- If you want to get these option to choose the resolution like this you can! by running this command which can be found [here](https://github.com/xzhih/one-key-hidpi), type your password and choose the numbers 1,3,1 then restart.
+- If you want to get these options to choose the resolution like this you can! by running this command which can be found [here](https://github.com/xzhih/one-key-hidpi), type your password and choose the numbers 1,3,1 then restart.
 ![](Images/HiDPI.png)
 - If you don't like the default Clover you can change it! Search the web and choose your favorite theme, copy-and-paste it to `themes` in `EFI` folder, then go to your `config.plist`, `GUI` section, `Theme` and type the name of your theme, you can use `Clover OSS Theme`, which looks like a real Mac boot-up screen. 
 ![](Images/Theme.png)
