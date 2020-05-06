@@ -1,6 +1,6 @@
 // WARNING: this patch is only for Lenovo IdeaPad 320-14IKB
 // May not work for your device.
-// Fake ambient light sensor device for Lenovo IdeaPad 320-14IKB.
+// Add ambient light sensor device for Lenovo IdeaPad 320-14IKB (pair with SMCLightSensor.kext).
 
 DefinitionBlock ("", "SSDT", 2, "Lenovo", "_ALS0", 0)
 {
