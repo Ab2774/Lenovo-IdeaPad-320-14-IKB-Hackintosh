@@ -2,14 +2,24 @@
 // May not work for your device.
 // Lenovo IdeaPad 320 14-IKB keyboard remap by swapping Command to Win.
 
-DefinitionBlock ("", "SSDT", 2, "ACDT", "_Swap", 0)
+DefinitionBlock ("", "SSDT", 2, "Lenovo", "_Swap", 0)
 {
-    Name(_SB.PCI0.LPCB.PS2K.RMCF, Package()
+    External (_SB_.PCI0.LPCB.PS2K, DeviceObj)
+
+    Scope (_SB.PCI0.LPCB.PS2K)
     {
-        "Keyboard", Package()
+        If (_OSI ("Darwin"))
         {
-            "Swap command and option", // Command to Win; otherwise, Command to Alt
-            ">n",
-        },
-    })
+            Name (RMCF, Package ()
+            {
+                "Keyboard", 
+                Package ()
+                {
+                    "Swap command and option", 
+                    ">n"
+                }
+            })
+        }
+    }
 }
+
