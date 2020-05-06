@@ -4,12 +4,12 @@
 
 DefinitionBlock ("", "SSDT", 2, "Lenovo", "_KBD", 0)
 {
-    External (_SB.PCI0.LPCB.EC0, DeviceObj)
-    External (_SB.PCI0.LPCB.KBD0.RMCF, DeviceObj)
-    External (_SB.PCI0.LPCB.EC0.XQ1C, MethodObj)
-    External (_SB.PCI0.LPCB.EC0.XQ1D, MethodObj)
+    External (_SB_.PCI0.LPCB.EC__, DeviceObj)
+    External (_SB_.PCI0.LPCB.EC__.XQ1C, MethodObj)    
+    External (_SB_.PCI0.LPCB.EC__.XQ1D, MethodObj)   
+    External (_SB_.PCI0.LPCB.KBD0, DeviceObj)
 
-    Scope (_SB.PCI0.LPCB.EC0)
+    Scope (_SB.PCI0.LPCB.EC)
     {
         Method (_Q1D, 0, NotSerialized) // (F11) Brightness Down
         {
@@ -19,10 +19,11 @@ DefinitionBlock ("", "SSDT", 2, "Lenovo", "_KBD", 0)
             }
             Else
             {
-                \_SB.PCI0.LPCB.EC0.XQ1C ()
+                \_SB.PCI0.LPCB.EC.XQ1C ()
             }
         }
-        Method (_Q1C, 0, NotSerialized) // (F12) Brightness Up
+
+        Method (_Q1C, 0, NotSerialized)  // (F12) Brightness Up
         {
             If (_OSI ("Darwin"))
             {
@@ -30,8 +31,8 @@ DefinitionBlock ("", "SSDT", 2, "Lenovo", "_KBD", 0)
             }
             Else
             {
-                \_SB.PCI0.LPCB.EC0.XQ1D ()
+                \_SB.PCI0.LPCB.EC.XQ1D ()
             }
-          }
         }
     }
+}
