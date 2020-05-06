@@ -49,3 +49,38 @@
 - Removed `SSDT-EC` because it's no longer needed
 - Removed `SSDT-RMCF` because it's no longer needed
 - Support Catalina 10.15.4
+
+
+# EFI v1.1.1
+- Updated Clover version to `5115`
+- Updated `AirportBrcmFixup` to `2.0.7`
+- Updated  `AppleALC`  to `1.4.9`
+- Updated `BrcmPatchRAM`  to `2.5.3`
+- Updated `Lilu`  to `1.4.4`
+- Updated `VirtualSMC`  and Plug-ins to `1.1.3`
+- Updated `VoodooPS2Controller`  to `2.1.4`
+- Updated `VoodooI2C` and satellites  to `2.4.1`
+- Updated `WhateverGreen`  to `1.3.9`
+- Updated `SSDT-ALS0`
+- Updated `SSDT-I2C`
+- Updated `SSDT-KBD` 
+- Updated `SSDT-PNLF` 
+- Updated `SSDT-PS2K` and renamed  as `SSDT-PS2-Map` 
+- Updated `SSDT-PrtSc-F13` 
+- Updated `SSDT-XOSI`
+- Updated `SSDT-Swap-Cmd-Alt`  
+- Updated `SSDT-PrtSc-13` to support both `Clover` and `OpenCore` Bootloaders  
+- Updated `SSDT-PTS` and `SSDT-XOSI` to support both `Clover` and `OpenCore` Bootloaders
+- Updated `layout-id` property in `config.plist` 
+- Updated `HFSPlus` driver for `Clover` Bootloader
+- Updated `clover-theme-oss` icons with high quality ones and fixed font
+- Added `OpenCore` Bootloader!
+- Added `NTFS` driver for `Clover` Bootloader
+- Added `device-id` property in `config.plist` for `Audio` device
+- Added `Enable TRIM for SSD` in `KextToPatch` in  `config.plist`
+- Added `SSDT-LIP320-14IKB` combining all the patches in one `SSDT` for `Clover` and `OpenCore` Bootloaders
+- Added `SSDT-PLUG`, `SSDT-SBUS` and `SSDT-MCHC` to support `OpenCore` Bootloader
+- Removed `change GFX0 to IGPU`,  `change TPD0._DSM to XDSM` and `change ECWK to XCWK` patches in `config.plist` becuase they are no longer needed
+- Removed `AddMCHC` in `config.plist` and replaced with `SSDT-MCHC` for `OpenCore` compatibility 
+- Removed `FixSBUS` in `config.plist` and replaced with `SSDT-SBUS` for `OpenCore` compatibility 
+- Removed `VoodooI2CHID.kext` because it's no longer needed
