@@ -5,15 +5,26 @@
 
 DefinitionBlock ("", "SSDT", 2, "Lenovo", "_F13", 0)
 {
-    Name(_SB.PCI0.LPCB.PS2K.RMCF, Package()
+    External (_SB_.PCI0.LPCB.PS2K, DeviceObj)
+
+    Scope (_SB.PCI0.LPCB.PS2K)
     {
-        "Keyboard", Package()
+        If (_OSI ("Darwin"))
         {
-            "Custom PS2 Map", Package()
+            Name (RMCF, Package ()
             {
-                Package(){},
-                "e037=64", // PrtSc=F13
-            },
-        },
-    })
+                "Keyboard", 
+                Package ()
+                {
+                    "Custom PS2 Map", 
+                    Package ()
+                    {
+                        Package (){}, 
+                        "e037=64" // PrtSc=F13
+                    }
+                }
+            })
+        }
+    }
 }
+
