@@ -3,7 +3,7 @@
 [![Chat](https://img.shields.io/badge/chat-tonymacx86-red.svg)](https://www.tonymacx86.com/threads/guide-lenovo-ideapad-320-14ikb-clover-uefi-hotpatch.293387/)
 
 
-A guide for installing macOS Catalina on Lenovo IdeaPad 320-14IKB using Clover and Opencore UEFI hotpatch.
+A guide for installing macOS Catalina on Lenovo IdeaPad 320-14IKB using Clover and OpenCore UEFI hotpatch.
 ![](Images/Laptop.png)
 
 
@@ -40,7 +40,7 @@ This laptop is a budget laptop, by these specs, you can't do some heavy work, ba
 # What's Not Working?
 - Apple Pay, requires TouchID, more information [here](https://discussions.apple.com/thread/7808558)
 # Bugs
-- DRM support (iTunes Movies, Apple TV+, Amazon Prime and Netflix, and others) could be fixed in the future, more information [here](https://github.com/acidanthera/bugtracker/issues/586) and [here](https://www.tonymacx86.com/threads/an-idiots-guide-to-lilu-and-its-plug-ins.260063/#DRM),
+- DRM support (iTunes Movies, Apple TV+, Amazon Prime and Netflix, and others) could be fixed in the future, more information [here](https://github.com/acidanthera/bugtracker/issues/586) and [here](https://www.tonymacx86.com/threads/an-idiots-guide-to-lilu-and-its-plug-ins.260063/#DRM).
 
 # Requirement 
 - 8 GB USB Disk 
@@ -60,7 +60,7 @@ Restart, and you're ready to go!
 
 # Extras
 - After you finished the installation you'll notice that your iMessage and other Apple services aren't working! to fix that issue you have to add `ROM`, `MLB` and a proper SMBIOS (which is MacBookPro14,1 for this device) in your `config.plist`, for more information follow this guide from [here](https://www.tonymacx86.com/threads/an-idiots-guide-to-imessage.196827/).
-- If you have an SSD installed, you can enable TRIM support on it, just enable this option in your `config.plist` and enjoy! (consider that it may slow booting a bit for APFS formated SSDs, more information about TRIM [here](https://en.wikipedia.org/wiki/Trim_(computing))
+- If you have an SSD installed, you can enable TRIM support on it, just enable this option in your `config.plist` and enjoy! (consider that it may slow booting a bit for APFS formatted SSDs, more information about TRIM [here](https://en.wikipedia.org/wiki/Trim_(computing))
 Clover:
 ![](Images/TRIM.png)
 OpenCore:
