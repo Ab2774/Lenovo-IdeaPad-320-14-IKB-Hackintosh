@@ -61,6 +61,10 @@ Restart, and you're ready to go!
 # Extras
 - After you finished the installation you'll notice that your iMessage and other Apple services aren't working! to fix that issue you have to add `ROM`, `MLB` and a proper SMBIOS (which is MacBookPro14,1 for this device) in your `config.plist`, for more information follow this guide from [here](https://www.tonymacx86.com/threads/an-idiots-guide-to-imessage.196827/).
 - If you have an SSD installed, you can enable TRIM support on it, just enable this option in your `config.plist` and enjoy! (consider that it may slow booting a bit for APFS formated SSDs, more information about TRIM [here](https://en.wikipedia.org/wiki/Trim_(computing))
+Clover:
+![](Images/TRIM.png)
+OpenCore:
+![](Images/TRIM-OC.png)
 - If you don't like the name of your laptop that shown in "About This Mac", you can change it! Press Shift+Cmd+G <kbd>⇧⌘G</kbd> and copy-and-paste this path: `/Users/Username/Library/Preferences/com.apple.SystemProfiler.plist`, and remember, The word `Username` Is for your username, now download your favorite plist editor (mine is "PilstEdit Pro"), then you can change to `Lenovo IdeaPad 320-14IKB (80XK)` or any name you want.
 ![](Images/Edit.png)
 ![](Images/About_This_Mac.png)
