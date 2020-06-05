@@ -1,12 +1,13 @@
 // WARNING: this patch is only for Lenovo IdeaPad 320-14IKB
 // May not work for your device.
-// Lenovo IdeaPad 320 14-IKB Keyboard map.
+// Lenovo IdeaPad 320 14-IKB Brightness Keyboard Shortcut.
+// Pair with VoodooPS2Keyboard.kext (inside VoodooPS2Controller.kext).
 
 DefinitionBlock ("", "SSDT", 2, "Lenovo", "_KBD", 0)
 {
     External (_SB_.PCI0.LPCB.EC__, DeviceObj)
-    External (_SB_.PCI0.LPCB.EC__.XQ1C, MethodObj)    
-    External (_SB_.PCI0.LPCB.EC__.XQ1D, MethodObj)   
+    External (_SB_.PCI0.LPCB.EC__.XQ1C, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.LPCB.EC__.XQ1D, MethodObj)    // 0 Arguments  
     External (_SB_.PCI0.LPCB.KBD0, DeviceObj)
 
     Scope (_SB.PCI0.LPCB.EC)
