@@ -1,7 +1,7 @@
 // WARNING: this patch is only for Lenovo IdeaPad 320-14IKB
 // May not work for your device.
 // Solving instant wake by hooking GPRW or UPRW 
-// for Lenovo IdeaPad 320 14-IKB.
+// For Lenovo IdeaPad 320 14-IKB.
 
 DefinitionBlock("", "SSDT", 2, "Lenovo", "_GPRW", 0)
 {
@@ -13,7 +13,7 @@ DefinitionBlock("", "SSDT", 2, "Lenovo", "_GPRW", 0)
         {
             If ((0x6D == Arg0))
             {
-                Return (Package (0x02)
+                Return (Package ()
                 {
                     0x6D, 
                     Zero
@@ -28,4 +28,3 @@ DefinitionBlock("", "SSDT", 2, "Lenovo", "_GPRW", 0)
         }
     }
 }
-
