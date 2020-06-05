@@ -2,6 +2,7 @@
 // May not work for your device.
 // Lenovo IdeaPad 320 14-IKB keyboard remap PrtSc to F13
 // Could then be mapped to one of the image capture functions via SysPrefs->Keyboard->Shortcuts. 
+// Pair with VoodooPS2Keyboard.kext (inside VoodooPS2Controller.kext).
 
 DefinitionBlock ("", "SSDT", 2, "Lenovo", "_F13", 0)
 {
