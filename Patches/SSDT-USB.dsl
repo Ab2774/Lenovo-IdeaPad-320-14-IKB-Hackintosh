@@ -1,6 +1,7 @@
 // WARNING: this patch is only for Lenovo IdeaPad 320-14IKB
 // May not work for your device.
-// USB Ports Injector for Lenovo IdeaPad 320 14-IKB.
+// USB Ports Injector and USB Ports Power for Lenovo IdeaPad 320 14-IKB.
+// Pair with USBPorts.kext.
 
 DefinitionBlock ("", "SSDT", 2, "Lenovo", "_USB", 0)
 {
@@ -23,18 +24,18 @@ DefinitionBlock ("", "SSDT", 2, "Lenovo", "_USB", 0)
         {
             If (!Arg2)
             {
-                Return (Buffer (One)
+                Return (Buffer ()
                 {
                      0x03                                          
                 })
             }
 
-            Return (Package (0x04)
+            Return (Package ()
             {
                 "kUSBSleepPortCurrentLimit", 
-                0x0BB8, 
+                0x0834, 
                 "kUSBWakePortCurrentLimit", 
-                0x0BB8
+                0x0834
             })
         }
     }
