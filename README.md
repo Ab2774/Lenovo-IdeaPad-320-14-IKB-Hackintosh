@@ -65,7 +65,7 @@ Clover:
 ![](Images/TRIM.png)
 OpenCore:
 ![](Images/TRIM-OC.png)
-- If you're a Synaptics trackpad user, your trackpad is supported! Just enable these options that can by found in `Extras` folder in this repository realeses to your `config.plist` and copy `VoodooI2CSynaptics.kext` to `Kexts` or `kexts/Other` folder.
+- If you're a Synaptics trackpad user, your trackpad is supported! Just enable these options that can be found in `Extras` folder in this repository realeses to your `config.plist` and copy `VoodooI2CSynaptics.kext` to `Kexts` or `kexts/Other` folder.
 ![](Images/Chime.png)
 - If you don't like the name of your laptop that shown in "About This Mac", you can change it! Press Shift+Cmd+G <kbd>⇧⌘G</kbd> and copy-and-paste this path: `/Users/Username/Library/Preferences/com.apple.SystemProfiler.plist`, and remember, The word `Username` Is for your username, now download your favorite plist editor (mine is "PilstEdit Pro"), then you can change to `Lenovo IdeaPad 320-14IKB (80XK)` or any name you want.
 ![](Images/Edit.png)
@@ -83,12 +83,11 @@ Clover:
 ![](Images/Graphics.png)
 OpenCore:
 ![](Images/Graphics-OC.png)
-- If your RAM information aren't shown properly in `System Report` you can fix that by adding them to your `Clover's` `config.plist`.
+- If your RAM information isn't shown properly in `System Report` you can fix that by adding them to your `Clover's` `config.plist`.
 ![](Images/RAM.png)
-- You can make your laptop boots automatic to macOS if you don't have another OS installed as shown in the photos, type your drive's name, check `Fast`, now your laptop should boot automatically to macOS without the `Clover Boot Menu`.
+- You can make your laptop boots automatic to macOS if you don't have another OS installed as shown in the photos, type your drive's name, check `Fast`, now your laptop should boot automatically to macOS without the `Clover Boot Menu`
 ![](Images/Auto1.png)
-![](Images/Auto2.png)
-In OpenCore it's a bit different, disable `ShowPicker` and open `System Preferences`, `Startup Disk`, type your password, choose the disk that boot from, and restart, if you want it to boot normally, press <kbd>Esc<kbd> in the startup menu, to show other disks and tools press `Space`, make sure to do this when you're done installing macOS and troubleshooting, in case you needed to boot to `Preboot` or reset `NVRAM` etc.
+In OpenCore it's a bit different, disable `ShowPicker` and open `System Preferences`, `Startup Disk`, type your password, choose the disk that boot from, and restart, if you want it to boot normally, press <kbd>Esc<kbd> in the startup menu, to show other disks and tools press <kbd>Space<kbd>, make sure to do this when you're done installing macOS and troubleshooting, in case you needed to boot to `Preboot` or reset `NVRAM` etc.
 ![](Images/Auto-OC1.png)
 ![](Images/Auto-OC2.png)
 ![](Images/Auto-OC3.png)
