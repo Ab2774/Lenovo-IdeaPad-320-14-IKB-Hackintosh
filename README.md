@@ -48,7 +48,7 @@ This laptop is a budget laptop, by these specs, you can't do some heavy work, ba
 - ~Mouse, because trackpad won't work in the installation~ Fixed with VoodooI2C v2.4
 
 # BIOS Configuration
-Before doing anything, remember to update your BIOS to the latest version from [here](https://pcsupport.lenovo.com/us/en/products/laptops-and-netbooks/300-series/320-14ikb/downloads/ds121587), preparing your laptop to macOS, reboot your laptop, when the Lenovo logo appears press <b>F2</b>, when the BIOS menu appears go to: 
+Before doing anything, make sure to update your BIOS to the latest version from [here](https://pcsupport.lenovo.com/us/en/products/laptops-and-netbooks/300-series/320-14ikb/downloads/ds121587), preparing your laptop to macOS, reboot your laptop, when the Lenovo logo appears press <b>F2</b>, when the BIOS menu appears go to: 
 - "Configuration" <b>SATA Controller Mode</b> to <b>AHCI</b>, <b>HotKey Mode</b> to <b>Enabled</b>.
 - "Security" <b>Intel Platform Trust Technology</b> to <b>Disabled</b>, <b>Intel SGX</b> to <b>Disabled</b>, <b>Secure Boot</b> to <b>Disabled</b>.
 - "Boot" <b>Boot Mode</b> to <b>UEFI</b>,<b>Fast Boot</b> to <b>Disabled</b>, <b>USB Boot</b> to <b>Enabled</b>.
@@ -83,9 +83,9 @@ Clover:
 ![](Images/Graphics.png)
 OpenCore:
 ![](Images/Graphics-OC.png)
-- If your RAM information isn't shown properly in `System Report` you can fix that by adding them to your `Clover's` `config.plist`.
+- If your RAM information isn't shown properly in `System Report` you can fix that by adding it to your `Clover's` `config.plist`.
 ![](Images/RAM.png)
-- You can make your laptop boots automatic to macOS if you don't have another OS installed as shown in the photos, type your drive's name, check `Fast`, now your laptop should boot automatically to macOS without the `Clover Boot Menu`
+- You can make your laptop boots automatically to macOS if you don't have another OS installed as shown in the photos, type your drive's name, check `Fast`, now your laptop should boot automatically to macOS without the `Clover Boot Menu`
 ![](Images/Auto1.png)
 In OpenCore it's a bit different, disable `ShowPicker` and open `System Preferences`, `Startup Disk`, type your password, choose the disk that boot from, and restart, if you want it to boot normally, press <kbd>Esc<kbd> in the startup menu, to show other disks and tools press <kbd>Space<kbd>, make sure to do this when you're done installing macOS and troubleshooting, in case you needed to boot to `Preboot` or reset `NVRAM` etc.
 ![](Images/Auto-OC1.png)
