@@ -1,13 +1,13 @@
 // WARNING: this patch is only for Lenovo IdeaPad 320-14IKB
 // May not work for your device.
-// Fake ambient light sensor device for Lenovo IdeaPad 320-14IKB.
+// Add MEM2 device for Lenovo IdeaPad 320-14IKB.
 
 DefinitionBlock ("", "SSDT", 2, "Lenovo", "_MEM2", 0)
 {
     Device (MEM2)
     {
-        Name (_HID, EisaId ("PNP0C01"))
-        Name (_UID, 0x02)
+        Name (_HID, EisaId ("PNP0C01") /* System Board */)  // _HID: Hardware ID
+        Name (_UID, 0x02)  // _UID: Unique ID
         Name (CRS, ResourceTemplate ()
         {
             Memory32Fixed (ReadWrite,
@@ -19,12 +19,12 @@ DefinitionBlock ("", "SSDT", 2, "Lenovo", "_MEM2", 0)
                 0x00200000,         // Address Length
                 )
         })
-        Method (_CRS, 0, NotSerialized)
+        Method (_CRS, 0, NotSerialized)  // _CRS: Current Resource Settings
         {
-            Return (CRS)
+            Return (CRS) /* \MEM2.CRS_ */
         }
-        
-        Method (_STA, 0, NotSerialized)
+
+        Method (_STA, 0, NotSerialized)  // _STA: Status
         {
             If (_OSI ("Darwin"))
             {
