@@ -1,8 +1,9 @@
 // WARNING: this patch is only for Lenovo IdeaPad 320-14IKB
 // May not work for your device.
 // Add PNLF device for Lenovo IdeaPad 320-14IKB.
+// Pair with WhateverGreen.kext and Lilu.kext.
 
-DefinitionBlock ("", "SSDT", 2, "Lenovo", "_PNLF", 0x00000000)
+DefinitionBlock ("", "SSDT", 2, "Lenovo", "_PNLF", 0)
 {
     Scope (_SB)
     {
