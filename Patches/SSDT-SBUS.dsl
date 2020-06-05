@@ -1,6 +1,6 @@
 // WARNING: this patch is only for Lenovo IdeaPad 320-14IKB
 // May not work for your device.
-// Add BUS0 and DVL0 devices Lenovo IdeaPad 320 14-IKB.
+// Add BUS0 and BLC0 devices Lenovo IdeaPad 320 14-IKB.
 
 DefinitionBlock ("", "SSDT", 2, "Lenovo", "_SBUS", 0)
 {
@@ -12,13 +12,13 @@ DefinitionBlock ("", "SSDT", 2, "Lenovo", "_SBUS", 0)
         {
             Name (_CID, "smbus")  // _CID: Compatible ID
             Name (_ADR, Zero)  // _ADR: Address
-            Device (DVL0)
+            Device (BLC0)
             {
-                Name (_ADR, 0x57)  // _ADR: Address
-                Name (_CID, "diagsvault")  // _CID: Compatible ID
+                Name (_ADR, Zero)  // _ADR: Address
+                Name (_CID, "smbus-blc")  // _CID: Compatible ID
                 Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method
                 {
-                    If (!Arg2)
+                    If ((Arg2 == Zero))
                     {
                         Return (Buffer (One)
                         {
@@ -26,10 +26,26 @@ DefinitionBlock ("", "SSDT", 2, "Lenovo", "_SBUS", 0)
                         })
                     }
 
-                    Return (Package (0x02)
+                    Return (Package ()
                     {
+                        "refnum", 
+                        Zero, 
                         "address", 
-                        0x57
+                        0x2C, 
+                        "command", 
+                        Zero, 
+                        "type", 
+                        0x49324300, 
+                        "version", 
+                        0x02, 
+                        "fault-off", 
+                        0x03, 
+                        "fault-len", 
+                        0x04, 
+                        "skey", 
+                        0x4C445342, 
+                        "smask", 
+                        0xFF
                     })
                 }
             }
@@ -48,4 +64,3 @@ DefinitionBlock ("", "SSDT", 2, "Lenovo", "_SBUS", 0)
         }
     }
 }
-
