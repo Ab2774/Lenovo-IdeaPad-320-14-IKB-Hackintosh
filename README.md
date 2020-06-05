@@ -1,6 +1,6 @@
 # Lenovo IdeaPad 320-14IKB (80XK) Hackitnosh 
 [![Release](https://img.shields.io/badge/download-release-blue.svg)](https://github.com/Ab2774/Lenovo-Ideapad-320-Hackintosh/releases)
-[![Chat](https://img.shields.io/badge/chat-tonymacx86-red.svg)](https://www.tonymacx86.com/threads/guide-lenovo-ideapad-320-14ikb-clover-uefi-hotpatch.293387/)
+[![Chat](https://img.shields.io/badge/chat-tonymacx86-red.svg)](https://www.tonymacx86.com/threads/guide-lenovo-ideapad-320-14ikb-clover-and-opencore-uefi-hotpatch.293387/)
 
 
 A guide for installing macOS Catalina on Lenovo IdeaPad 320-14IKB using Clover and OpenCore UEFI hotpatch.
