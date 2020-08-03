@@ -6,13 +6,13 @@
 
 # EFI v1.1.0
 - Updated Clover Bootloader version to `5109`
-- Updated  `AppleALC`  to `1.4.8`
-- Updated `BrcmPatchRAM`  to `2.5.2`
-- Updated `Lilu`  to `1.4.3`
-- Updated `VirtualSMC`  and Plug-ins to `1.1.2`
-- Updated `VoodooPS2Controller`  to `2.1.3`
-- Updated `WhateverGreen`  to `1.3.8`
-- Updated `USBPorts`
+- Updated  `AppleALC` Kext to `1.4.8`
+- Updated `BrcmPatchRAM` Kext to `2.5.2`
+- Updated `Lilu` Kext to `1.4.3`
+- Updated `VirtualSMC` Kext and Plug-ins to `1.1.2`
+- Updated `VoodooPS2Controller` Kext to `2.1.3`
+- Updated `WhateverGreen` Kext to `1.3.8`
+- Updated `USBPorts` Kext
 - Updated `SSDT-GPRW`
 - Updated `SSDT-I2C`
 - Updated `SSDT-PTS`
@@ -27,13 +27,13 @@
 - Added `PanicNoKextDump` in `config.plist`
 - Added `Trust` in `SMBIOS` in  `config.plist`
 - Added `SSDT-DMAC`, `SSDT-MEM2`, `SSDT-PMCR`, `SSDT-HPET`, `SSDT-Swap-Cmd-Alt` and `SSDT-ALS0` to be more like a real Mac
-- Added `SSDT-PS2K` for swapping Cmd and Alt and remap PrtSc to F13 together 
+- Added `SSDT-PS2K` for swapping Cmd and Alt and remap PrtSc as F13 together 
 - Added `SSDT-KBD` instead of `SSDT-PS2K` for brightness keys
 - Added better clover theme `clover-theme-oss`
 - Removed `CodecCommander` from  `/Volumes/EFI/EFI/CLOVER/kexts/Other`  to  `/Library/Extensions`
 - Removed `HDAS to HDEF` and `HECI to IMEI` patch in `config.plist` becuase it's no longer needed
 - Removed `change TPD0._DSM to XDSM` patch in `config.plist` becuase it's no longer needed
-- Removed `change Notify (BAT0, 0x81 to BATC)` and  `change Notify (BAT0, 0x80 to BATC)` patch in `config.plist` becuase it's no longer needed
+- Removed `change Notify (BAT0, 0x81 to BATC)` and  `change Notify (BAT0, 0x80 to BATC)` patch in `config.plist` becuase they're no longer needed
 - Removed `AddPNLF` in `config.plist` And replaced  with  `SSDT-PNLF` and `SSDT-ALSO` and for better brightness 
 - Removed `FixRegion` in `config.plist` becuase it's no longer needed
 - Removed  `NoOemTabeld` and  `NoDynamicExtract` SSDT in `config.plist` because it's no longer needed
@@ -41,25 +41,25 @@
 - Removed `RtcHibernateAware` and `SkipHibernateTimeout` and replaced with `NeverHibernate` for better sleep and power management 
 - Removed `Add ClockID` in `USB` in `config.plist` because it's no longer needed
 - Removed `Kernel LAPIC` in `Kernel and Kexts Patches` in `config.plist` because it's no longer needed
-- Removed `Prevent Apple I2C kexts from attaching to I2C controllers` patches because it's no longer needed
+- Removed `Prevent Apple I2C Kexts from attaching to I2C controllers` patches because it's no longer needed
 - Removed `MSR 0xE2 _xcpm_idle instant reboot` because it's no longer needed
 - Removed `Memory` info in `SMBIOS` in `config.plist` becuase not all people have the same branded RAM
 - Removed `SMCSuperIO.kext` because it failed to detect SuperIO chip
 - Removed `SSDT-USB_kextless` because it's no longer needed
 - Removed `SSDT-EC` because it's no longer needed
 - Removed `SSDT-RMCF` because it's no longer needed
-- Supports Catalina 10.15.4
+- Supports macOS Catalina 10.15.4
 
 
 # EFI v1.1.1
 - Updated Clover Bootloader version to `5115`
-- Updated `AirportBrcmFixup` to `2.0.7`
-- Updated  `AppleALC`  to `1.4.9`
-- Updated `BrcmPatchRAM`  to `2.5.3`
-- Updated `Lilu`  to `1.4.4`
-- Updated `VirtualSMC`  and Plug-ins to `1.1.3`
-- Updated `VoodooPS2Controller`  to `2.1.4`
-- Updated `VoodooI2C` and satellites  to `2.4.1`
+- Updated `AirportBrcmFixup` Kext to `2.0.7`
+- Updated  `AppleALC` Kext to `1.4.9`
+- Updated `BrcmPatchRAM` Kext to `2.5.3`
+- Updated `Lilu` Kext to `1.4.4`
+- Updated `VirtualSMC` Kext and Plug-ins to `1.1.3`
+- Updated `VoodooPS2Controller` Kext to `2.1.4`
+- Updated `VoodooI2C` Kext and Satellites to `2.4.1`
 - Updated `WhateverGreen`  to `1.3.9`
 - Updated `SSDT-ALS0`
 - Updated `SSDT-I2C`
@@ -70,15 +70,15 @@
 - Updated `SSDT-XOSI` to support both `Clover` and `OpenCore` Bootloaders
 - Updated `SSDT-Swap-Cmd-Alt`  
 - Updated `layout-id` property in `config.plist` 
-- Updated `HFSPlus` driver for `Clover` Bootloader
+- Updated `HFSPlus` Driver for `Clover` Bootloader
 - Updated `clover-theme-oss` icons with high quality ones and fixed font
 - Added `OpenCore` Bootloader!
-- Added `NTFS` driver for `Clover` Bootloader
+- Added `NTFS` Driver for `Clover` Bootloader
 - Added `device-id` property in `config.plist` for `Audio` device
 - Added `Enable TRIM for SSD` in `KextToPatch` in  `config.plist`
 - Added `SSDT-LIP320-14IKB` combining all the patches in one `SSDT` for `Clover` and `OpenCore` Bootloaders
 - Added `SSDT-PLUG`, `SSDT-SBUS` and `SSDT-MCHC` to support `OpenCore` Bootloader
-- Removed `change GFX0 to IGPU`,  `change TPD0._DSM to XDSM` and `change ECWK to XCWK` patches in `config.plist` becuase they are no longer needed
+- Removed `change GFX0 to IGPU`,  `change TPD0._DSM to XDSM` and `change ECWK to XCWK` patches in `config.plist` becuase they're no longer needed
 - Removed `AddMCHC` in `config.plist` and replaced with `SSDT-MCHC` for `OpenCore` compatibility 
 - Removed `FixSBUS` in `config.plist` and replaced with `SSDT-SBUS` for `OpenCore` compatibility 
 - Removed `VoodooI2CHID.kext` because it's no longer needed
@@ -87,11 +87,11 @@
 # EFI v1.1.2
 - Updated Clover Bootloader version to `5119`
 - Updated OpenCore Bootloader version to `0.5.9`
-- Updated  `AppleALC`  to `1.5.0`
-- Updated `Lilu`  to `1.4.5`
-- Updated `VirtualSMC`  and Plug-ins to `1.1.4`
-- Updated `VoodooI2C` and satellites  to `2.4.3`
-- Updated `USBports` for better sleep
+- Updated `AppleALC` Kext to `1.5.0`
+- Updated `Lilu` Kext to `1.4.5`
+- Updated `VirtualSMC` Kext and Plug-ins to `1.1.4`
+- Updated `VoodooI2C` Kext and Satellites  to `2.4.3`
+- Updated `USBports` Kext for better sleep
 - Updated `WhateverGreen`  to `1.4.0`
 - Updated `SSDT-ALS0` to support more models
 - Updated `SSDT-DMAC` to support more models
@@ -101,22 +101,77 @@
 - Updated `SSDT-PMCR` to support more models
 - Updated `SSDT-SBUS` from DVL0 device to BLC0 device to support more models
 - Updated `SSDT-USB` for better sleep
-- Updated `SSDT-LIP320-14IKB` to support Synaptics trackpad, support more models and arranged  the patches alphabetically
-- Updated `OpenCore's` `config.plist` to support `0.5.9`
+- Updated `SSDT-LIP320-14IKB` to support Synaptics trackpad, support more models, and arranged the patches alphabetically
+- Updated `OpenCore's` `config.plist` to support `0.5.9` changes
 - Added `NoTouchID` for better compatibility
-- Added additional kext `VoodooI2CSynaptics` to support Synaptics users
-- Added paring information to `SSDT-ALS0`, `SSDT-I2C`, `SSDT-KBD0`, `SSDT-PNLF`, `SSDT-PrtSc-F13`, `SSDT-PS2-Map`, `SSDT-Swap-Cmd-Alt`,  `SSDT-USB` and  `SSDT-LIP320-14IKB`
+- Added additional Kext `VoodooI2CSynaptics` to support Synaptics users
+- Added paring information in `SSDT-ALS0`, `SSDT-I2C`, `SSDT-KBD`, `SSDT-PNLF`, `SSDT-PrtSc-F13`, `SSDT-PS2-Map`, `SSDT-Swap-Cmd-Alt`,  `SSDT-USB` and  `SSDT-LIP320-14IKB`
 - Added `AppleRTC` property in `Clover's` `config.plist` to fix some rare sleep issues
 - Added AppleIntelLpssI2C patches in `Clover's` `config.plist` because `VoodooI2C` failed to block them
-- Removed Wi-Fi and Bluetooth kexts from `EFI` folder and moved to `Extras` file for better compatibility
+- Removed Wi-Fi and Bluetooth Kexts from `EFI` folder and moved to `Extras` file for better compatibility
 - Removed `FakePCID` because it's no longer needed
-- Removed `xh_rvp07 `and `xh_rvp10 `SSDT in `config.plist` because it's no longer needed
+- Removed `xh_rvp07` and `xh_rvp10` SSDT in `config.plist` because it's no longer needed
 - Removed `NeverHibernate` and replaced with `HibernationFixup` for better compatibility
 - Removed `PlayChime` and `AudioDxe.efi` from `OpenCore's``config.plist` and from `EFI` to `Extras` file for better compatibility
-- Changed `Target` value in `Debug` in `Misc` in `OpenCore's` `config.plist` from `3` to `0` for better compatibility
-- Changed `AuthRestart` value in `Security` in `Misc` in `OpenCore's` `config.plist` from `NO` to `YES` for better compatibility
-- Changed `ExposeSensitiveData` value in `Security` in `Misc` in `OpenCore's` `config.plist` from `6` to `3` for better compatibility
-- Changed `IgnoreTextInGraphics` value in `Output` in `UEFI` in `OpenCore's` `config.plist` from `YES` to `NO` for better compatibility
-- Changed `Resolution` value in `Output` in `UEFI` in `OpenCore's` `config.plist` from `1920x1080` to `Max` for better compatibility
-- Removed `FwRuntimeServices` and `OcQuirks` drivers and replaced wiith `AppleGenericInput`, `AppleUiSupport.efi` and `AptioMemoryFix` for better compatibility
-- Supports Catalina 10.15.5
+- Changed `Target` value from `NO` to `YES` in `Debug` in `Misc` in `OpenCore's` `config.plist`
+- Changed `AuthRestart` value in `Security` in `Misc` in `OpenCore's` `config.plist` from `NO` to `YES`
+- Changed `ExposeSensitiveData` value in `Security` in `Misc` in `OpenCore's` `config.plist` from `6` to `3`
+- Changed `IgnoreTextInGraphics` value in `Output` in `UEFI` in `OpenCore's` `config.plist` from `YES` to `NO`
+- Changed `Resolution` value in `Output` in `UEFI` in `OpenCore's` `config.plist` from `1920x1080` to `Max`
+- Removed `FwRuntimeServices` and `OcQuirks` Drivers and replaced wiith `AppleGenericInput`, `AppleUiSupport.efi` and `AptioMemoryFix`
+- Supports macOS Catalina 10.15.5
+
+# EFI v1.1.3
+- Updated Clover Bootloader version to `5120`
+- Updated OpenCore Bootloader version to `0.6.0`
+- Updated `AirportBrcmFixup` Kext to `2.0.8`
+- Updated `AppleALC` Kext to `1.5.1`
+- Updated `BrcmPatchRAM` Kext to `2.5.4`
+- Updated `Lilu` Kext to `1.4.6`
+- Updated `NoTouchID` Kext to `1.0.4`
+- Updated `VirtualSMC` Kext and Plug-ins to `1.1.6` 
+- Updated `VoodooI2C` Kext and Satellites pre-released to `2.4.4`
+- Updated `VoodooPS2Controller` Kext to `2.1.6`
+- Updated `WhateverGreen` Kext to `1.4.1`
+- Updated `SSDT-GPRW` for better compatibility
+- Updated `SSDT-KBD` to remap <kbd>Delete</kbd> key, fix Function Keys, and fix <kbd>F9</kbd> and <kbd>F10</kbd> keys
+- Updated `SSDT-PS2-Map` to remap <kbd>Delete</kbd> key, fix Function Keys, and fix <kbd>F9</kbd> and <kbd>F10</kbd> keys
+- Updated `SSDT-USB` to work independently without `USBPorts` Kext
+- Updated `SSDT-LIP320-14IKB` due to changes of `SSDT-GPRW`, and `SSDT-USB`
+- Updated all icons as macOS Big Sur style for both `Clover` and `OpenCore`
+- Updated all `Linux` icons as macOS Big Sur style for both `Clover` and `OpenCore` (thanks @blackosx)
+- Updated `OpenCore's` `config.plist` to support `0.6.0` changes
+- Added back `SSDT-EC` to make less renaming patches as possible
+- Added `SSDT-IRQ` for better compatibility
+- Added `macserial` Tool to generate SMBIOS for new users
+- Added `Rename Method _Q11 to XQ11` and `Rename Method _Q12 to XQ12` rename methods to both `Clover` and `OpenCore's` `config.plist`
+- Added `Quirks` section into `Clover's` `config.plist`
+- Added back `MLB` into `Clover's` `config.plist`
+- Added `run-efi-updater` into `OpenCore's` `config.plist` to support macOS Big Sur 11.0
+- Added back `OcQuirks` Driver to `Clover` Bootloader
+- Added `OpenRuntime` Driver to `Clover` Bootloader
+- Fixed typo in `SSDT-ALS0`, `SSDT-DMAC`, `SSDT-KBD`, `SSDT-GPRW`, `SSDT-I2C`, `SSDT-PS2-Map`, `SSDT-MCHC`,  `SSDT-MEM2`, `SSDT-PLUG`, `SSDT-PMCR`, `SSDT-PNLF`, `SSDT-PS2-Map`, `SSDT-PTS`, `SSDT-SBUS`, `SSDT-Swap-Cmd-Alt`, `SSDT USB`, `SSDT-XOSI`, and  `SSDT-LIP320-14IKB`
+- Removed `USBPorts` Kext because it's no longer needed 
+- Removed `SSDT-HPET` and replaced with `SSDT-IRQ` for better compatibility
+- Removed `SSDT-PrtSc-F13` due to `SSDT-PS2-Map` changes
+- Removed `Rename EC0 to EC` rename method and replaced with `SSDT-EC` to make less renaming patches as possible
+- Removed `NTFS` Driver from both `OpenCore` and `Clover` Bootloaders because it's no longer needed
+- Removed `AppleGenericInput.efi`, `AppleUiSupport.efi`, and `AppleUiSupport.efi` Drivers from `Clover` Bootloader because they're longer needed
+- Removed `Bootsrap` folder and Driver from `OpenCore` Bootloader because it's no longer needed
+- Removed `NTFS` Driver from both `OpenCore` and `Clover` Bootloaders because it's no longer needed
+- Changed `CsrActiveConfig` value from `0x67` to `0x0877` in `Clover's` `config.plist` to support macOS Big Sur 11.0
+- Changed `RebaseRegions` value from `YES` to `NO` in `Patch` in `ACPI` in `OpenCore's` `config.plist` for better compatibility
+- Changed `ProvideCustomSlide` value from `NO` to `YES` in `Quirks` in `Booter` in `OpenCore's` `config.plist`
+- Changed `CustomSMBIOSGuid` value from `NO` to `YES` in `Quirks` in `Kernel` in `OpenCore's` `config.plist`
+- Changed `XhciPortLimit` value from `NO` to `YES` in `Quirks` in `Kernel` in `OpenCore's` `config.plist`
+- Changed `PickerAttributes` value from `0` to `1` in `Boot` in `Misc` in `OpenCore's` `config.plist`
+- Changed `PickerAudioAssist` value from `YES` to `NO` in `Boot` in `Misc` in `OpenCore's` `config.plist`
+- Changed `PollAppleHotKeys` value from `YES` to `NO` in `Boot` in `Misc` in `OpenCore's` `config.plist`
+- Changed `AppleDebug` value from `NO` to `YES` in `Debug` in `Misc` in `OpenCore's` `config.plist`
+- Changed `ApplePanic` value from `NO` to `YES` in `Debug` in `Misc` in `OpenCore's` `config.plist`
+- Changed `DisableWatchDog` value from `NO` to `YES` in `Debug` in `Misc` in `OpenCore's` `config.plist`
+- Changed `Clean NVRAM` Tool from `YES` to `NO` in `Tools` in `Misc` in `OpenCore's` `config.plist` because it's no longer needed
+- Changed `CsrActiveConfig` value from `67000000` to `77080000`  in `NVRAM` in `OpenCore's` `config.plist` to support macOS Big Sur 11.0
+- Changed `UpdateSMBIOSMode` value from `Create` to `Custom` in `SMBIOS` in `OpenCore's` `config.plist`
+- Changed `JumpstartHotPlug` value from `NO` to `YES` in `APFS` `UEFI` in `OpenCore's` `config.plist` to support macOS Big Sur 11.0 Recovery (thanks @stevezhengshiqi)
+- Supports macOS Big Sur 11.0 (`OpenCore` only) & macOS Catalina 10.15.6
