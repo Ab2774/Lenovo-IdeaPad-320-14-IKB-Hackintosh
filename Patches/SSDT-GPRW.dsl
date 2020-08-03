@@ -1,9 +1,10 @@
 // WARNING: this patch is only for Lenovo IdeaPad 320-14IKB
-// May not work for your device.
-// Solving instant wake by hooking GPRW or UPRW 
-// For Lenovo IdeaPad 320 14-IKB.
+// May not work for your device
+// Guide: https://github.com/Ab2774/Lenovo-IdeaPad-320-14-IKB-Hackintosh
+// Fix instant wake by hooking GPRW 
+// Pair with _GPRW to XPRW Rename Method
 
-DefinitionBlock("", "SSDT", 2, "Lenovo", "_GPRW", 0)
+DefinitionBlock ("", "SSDT", 2, "Lenovo", "_GPRW", 0)
 {
     External (XPRW, MethodObj)    // 2 Arguments
 
@@ -20,11 +21,17 @@ DefinitionBlock("", "SSDT", 2, "Lenovo", "_GPRW", 0)
                 })
             }
 
-            Return (XPRW (Arg0, Arg1))
+            If ((0x0D == Arg0))
+            {
+                Return (Package ()
+                {
+                    0x0D, 
+                    Zero
+                })
+            }
         }
-        Else
-        {
-            Return (XPRW (Arg0, Arg1))
-        }
+
+        Return (XPRW (Arg0, Arg1))
     }
 }
+
