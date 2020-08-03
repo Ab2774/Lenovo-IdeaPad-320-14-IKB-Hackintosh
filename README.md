@@ -88,7 +88,7 @@ OpenCore:
 ![](Images/RAM.png)
 - You can make your laptop boots automatically to macOS if you don't have another OS installed as shown in the photos, type your drive's name, check `Fast`, now your laptop should boot automatically to macOS without the `Clover Boot Menu`
 ![](Images/Auto1.png)
-- In OpenCore it's a bit different, disable `ShowPicker` and open `System Preferences`, `Startup Disk`, type your password, choose the disk that boot from, and restart, if you want it to boot normally, press <kbd>Esc</kbd> in the startup menu, to show other disks and tools press <kbd>Space<kbd>, make sure to do this when you're done installing macOS and troubleshooting, in case you needed to boot to `Preboot` or reset `NVRAM` etc.
+- In OpenCore it's a bit different, disable `ShowPicker` and open `System Preferences`, `Startup Disk`, type your password, choose the disk that boot from, and restart, if you want it to boot normally, press <kbd>Esc</kbd> in the startup menu, to show other disks and tools press <kbd>Space</kbd>, make sure to do this when you're done installing macOS and troubleshooting, in case you needed to boot to `Preboot` or reset `NVRAM` etc.
 ![](Images/Auto-OC1.png)
 ![](Images/Auto-OC2.png)
 ![](Images/Auto-OC3.png)
