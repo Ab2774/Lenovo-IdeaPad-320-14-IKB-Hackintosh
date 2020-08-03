@@ -1,6 +1,7 @@
 // WARNING: this patch is only for Lenovo IdeaPad 320-14IKB
-// May not work for your device.
-// Enable power managment by injecting plugin-type=1 for Lenovo IdeaPad 320 14-IKB.
+// May not work for your device
+// Guide: https://github.com/Ab2774/Lenovo-IdeaPad-320-14-IKB-Hackintosh
+// Enable Power Managment by injecting PluginType=1
 
 DefinitionBlock ("", "SSDT", 2, "Lenovo", "_PLUG", 0)
 {
@@ -14,7 +15,7 @@ DefinitionBlock ("", "SSDT", 2, "Lenovo", "_PLUG", 0)
             {
                 If (!Arg2)
                 {
-                    Return (Buffer (One)
+                    Return (Buffer ()
                     {
                          0x03                                            
                     })
@@ -29,3 +30,4 @@ DefinitionBlock ("", "SSDT", 2, "Lenovo", "_PLUG", 0)
         }
     }
 }
+
