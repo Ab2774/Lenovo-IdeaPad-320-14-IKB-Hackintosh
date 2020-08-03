@@ -31,17 +31,17 @@
 		<key>Components</key>
 		<dict>
 			<key>Banner</key>
-			<false/>
+			<true/>
 			<key>Functions</key>
 			<true/>
 			<key>Help</key>
-			<false/>
+			<true/>
 			<key>Label</key>
 			<true/>
 			<key>MenuTitle</key>
 			<true/>
 			<key>Revision</key>
-			<false/>
+			<true/>
 		</dict>
 		<key>Font</key>
 		<dict>
@@ -67,7 +67,7 @@
 		</dict>
 	</dict>
 	<key>Version</key>
-	<string>1.4</string>
+	<string>1.6</string>
 	<key>Year</key>
 	<string>2020</string>
 </dict>
