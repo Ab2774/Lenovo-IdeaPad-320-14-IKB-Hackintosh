@@ -1,6 +1,7 @@
 // WARNING: this patch is only for Lenovo IdeaPad 320-14IKB
-// May not work for your device.
-// Lenovo IdeaPad 320 14-IKB complete patches for Clover and OpenCore Bootloaders.
+// May not work for your device
+// Guide: https://github.com/Ab2774/Lenovo-IdeaPad-320-14-IKB-Hackintosh
+// Complete patches for Lenovo IdeaPad 320-14IKB
 
 DefinitionBlock ("", "SSDT", 2, "Lenovo", "_LIP", 0)
 {
@@ -10,32 +11,32 @@ DefinitionBlock ("", "SSDT", 2, "Lenovo", "_LIP", 0)
     External (_SB_.PCI0.I2C0.TPD0, DeviceObj)
     External (_SB_.PCI0.I2C0.TPD0.SBFG, IntObj)
     External (_SB_.PCI0.I2C0.TPD0.SBFS, IntObj)
-    External (_SB_.PCI0.LPCB.EC__, DeviceObj)
-    External (_SB_.PCI0.LPCB.EC__.XQ1C, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.LPCB.EC__.XQ1D, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.LPCB.HPET, DeviceObj)
-    External (_SB_.PCI0.LPCB.KBD0, DeviceObj)
+    External (_SB_.PCI0.LPCB.EC0_, DeviceObj)
+    External (_SB_.PCI0.LPCB.EC0_.XQ11, MethodObj)    // 0 Arguments
+    External (_SB_.PCI0.LPCB.EC0_.XQ12, MethodObj)    // 0 Arguments
     External (_SB_.PCI0.LPCB.PS2K, DeviceObj)
+    External (_SB_.PCI0.LPCB.RTC_, DeviceObj)
+    External (_SB_.PCI0.LPCB.TIMR, DeviceObj)
     External (_SB_.PCI0.SBUS, DeviceObj)
     External (_SB_.PCI0.XHC_.PMEE, FieldUnitObj)
-    External (HPTE, FieldUnitObj)
+    External (HPTE, IntObj)
     External (XPRW, MethodObj)    // 2 Arguments
     External (ZPTS, MethodObj)    // 1 Arguments
 
-    Method (_PTS, 1, NotSerialized)  // Fix Auto Start after Shutdown if a USB device is plugged In
+    Method (_PTS, 1, NotSerialized)  // _PTS: Prepare To Sleep
     {
         If (_OSI ("Darwin"))
         {
             If ((0x05 == Arg0))
             {
-                \_SB.PCI0.XHC.PMEE = Zero
+                \_SB.PCI0.XHC.PMEE = Zero  // Fix auto start after Shut Down if an USB device is plugged in, pair with _PTS to ZPTS Rename Method
             }
         }
 
         ZPTS (Arg0)
     }
 
-    Method (GPRW, 2, NotSerialized) // Solving instant wake by hooking GPRW or UPRW 
+    Method (GPRW, 2, NotSerialized)  // Fix instant wake by hooking GPRW, pair with _GPRW to XPRW Rename Method
     {
         If (_OSI ("Darwin"))
         {
@@ -48,21 +49,26 @@ DefinitionBlock ("", "SSDT", 2, "Lenovo", "_LIP", 0)
                 })
             }
 
-            Return (XPRW (Arg0, Arg1))
+            If ((0x0D == Arg0))
+            {
+                Return (Package ()
+                {
+                    0x0D, 
+                    Zero
+                })
+            }
         }
-        Else
-        {
-            Return (XPRW (Arg0, Arg1))
-        }
+
+        Return (XPRW (Arg0, Arg1))
     }
 
-    Method (XOSI, 1, NotSerialized) // Override for host defined _OSI to handle "Darwin"
+    Method (XOSI, 1, NotSerialized)  // Override for host defined _OSI to handle "Darwin", pair with _OSI to XOSI Rename Method
     {
         If (_OSI ("Darwin"))
         {
             If ((Arg0 == "Windows 2012"))
             {
-                Return (0xFFFFFFFF)
+                Return (0x0F)
             }
             Else
             {
@@ -75,7 +81,7 @@ DefinitionBlock ("", "SSDT", 2, "Lenovo", "_LIP", 0)
         }
     }
 
-    Scope (_PR.CPU0) // Enable power managment by injecting plugin-type=1
+    Scope (_PR.CPU0)  // Enable Power Managment by injecting PluginType=1
     {
         If (_OSI ("Darwin"))
         {
@@ -83,7 +89,7 @@ DefinitionBlock ("", "SSDT", 2, "Lenovo", "_LIP", 0)
             {
                 If (!Arg2)
                 {
-                    Return (Buffer (One)
+                    Return (Buffer ()
                     {
                          0x03                                             
                     })
@@ -98,9 +104,9 @@ DefinitionBlock ("", "SSDT", 2, "Lenovo", "_LIP", 0)
         }
     }
 
-    Scope (_SB) // Add PNLF device, pair with WhateverGreen.kext and Lilu.kext
+    Scope (_SB)
     {
-        Device (PNLF)
+        Device (PNLF)  // Add PNLF device, pair with WhateverGreen and Lilu kexts
         {
             Name (_HID, EisaId ("APP0002"))  // _HID: Hardware ID
             Name (_CID, "backlight")  // _CID: Compatible ID
@@ -109,7 +115,7 @@ DefinitionBlock ("", "SSDT", 2, "Lenovo", "_LIP", 0)
             {
                 If (_OSI ("Darwin"))
                 {
-                    Return (0x0B)
+                    Return (0x0F)
                 }
                 Else
                 {
@@ -117,11 +123,19 @@ DefinitionBlock ("", "SSDT", 2, "Lenovo", "_LIP", 0)
                 }
             }
         }
+
+        Method (_INI, 0, NotSerialized)  // _INI: Initialize
+        {
+            If (_OSI ("Darwin"))
+            {
+                HPTE = Zero  // Disable High Precision Event Timer (HPET) device
+            }
+        }
     }
-    
+
     Scope (_SB.PCI0)
     {
-        Device (MCHC) // Add MCHC device
+        Device (MCHC)  // Add MCHC device
         {
             Name (_ADR, Zero)  // _ADR: Address
             Method (_STA, 0, NotSerialized)  // _STA: Status
@@ -138,7 +152,7 @@ DefinitionBlock ("", "SSDT", 2, "Lenovo", "_LIP", 0)
         }
     }
     
-    Scope (_SB.PCI0.I2C0) // ELAN and Synaptics Trackpad Fix, pair with VoodooI2C.kext
+    Scope (_SB.PCI0.I2C0)  // Bus Speed for ELAN and Synaptics trackpad, pair with VoodooI2C kext, and _CRS to XCRS Rename Method
     {
         If (_OSI ("Darwin"))
         {
@@ -163,7 +177,7 @@ DefinitionBlock ("", "SSDT", 2, "Lenovo", "_LIP", 0)
         })
     }
 
-    Scope (_SB.PCI0.I2C0.TPD0) // ELAN and Synaptics Trackpad Fix, pair with VoodooI2C.kext
+    Scope (_SB.PCI0.I2C0.TPD0)  // Enable ELAN and Synaptics trackpad, pair with VoodooI2C kext, and _CRS to XCRS Rename Method
     {
         Method (_CRS, 0, NotSerialized)  // _CRS: Current Resource Settings
         {
@@ -172,45 +186,66 @@ DefinitionBlock ("", "SSDT", 2, "Lenovo", "_LIP", 0)
         }
     }
     
-    Scope (_SB.PCI0.LPCB.EC) // Brightness Keyboard shortcut, pair with VoodooPS2Keyboard.kext (inside VoodooPS2Controller.kext)
+    Scope (_SB.PCI0.LPCB.EC0) // Fix Function Keys, pair with VoodooPS2Keyboard kext (inside VoodooPS2Controller kext), pair with _Q11 to XQ11 and_ Q12 to XQ12 Rename Methods
     {
-        Method (_Q1D, 0, NotSerialized) // (F11) Brightness Down
+        Method (_Q11, 0, NotSerialized)  // _Q11: EC Query
         {
             If (_OSI ("Darwin"))
             {
-                Notify (KBD0, 0x0405)
+                Notify (PS2K, 0x0357)  // (F11) Brightness Down
+                Notify (PS2K, 0x0365)  // (F14) Brightness Down
             }
             Else
             {
-                \_SB.PCI0.LPCB.EC.XQ1C ()
+                \_SB.PCI0.LPCB.EC0.XQ11 ()
             }
         }
 
-        Method (_Q1C, 0, NotSerialized)  // (F12) Brightness Up
+        Method (_Q12, 0, NotSerialized)  // _Q12: EC Query
         {
             If (_OSI ("Darwin"))
             {
-                Notify (KBD0, 0x0406)
+                Notify (PS2K, 0x0358)  // (F12) Brightness Up
+                Notify (PS2K, 0x0366)  // (F15) Brightness Up
             }
             Else
             {
-                \_SB.PCI0.LPCB.EC.XQ1D ()
+                \_SB.PCI0.LPCB.EC0.XQ12 ()
+            }
+        }
+    }
+    
+    Scope (_SB.PCI0.LPCB.RTC)  // Disable Real Time Clock (RTC) device
+    {
+        Method (_STA, 0, NotSerialized)  // _STA: Status
+        {
+            If (_OSI ("Darwin"))
+            {
+                Return (Zero)
+            }
+            Else
+            {
+                Return (0x0F)
+            }
+        }
+    }
+    
+    Scope (_SB.PCI0.LPCB.TIMR)  // Disable TIMR device
+    {
+        Method (_STA, 0, NotSerialized)  // _STA: Status
+        {
+            If (_OSI ("Darwin"))
+            {
+                Return (Zero)
+            }
+            Else
+            {
+                Return (0x0F)
             }
         }
     }
 
-    Scope (_SB.PCI0.LPCB.HPET) // Disable HPET device
-    {
-        Method (_INI, 0, NotSerialized)  // _INI: Initialize
-        {
-            If (_OSI ("Darwin"))
-            {
-                HPTE = Zero
-            }
-        }
-    }
-
-    Scope (_SB.PCI0.LPCB.PS2K) // Keyboard remap PrtSc to F13 and swap Command to Win, pair with VoodooPS2Keyboard.kext (inside VoodooPS2Controller.kext)
+    Scope (_SB.PCI0.LPCB.PS2K)  // Pair with VoodooPS2Keyboard kext (inside VoodooPS2Controller kext)
     {
         If (_OSI ("Darwin"))
         {
@@ -219,23 +254,72 @@ DefinitionBlock ("", "SSDT", 2, "Lenovo", "_LIP", 0)
                 "Keyboard", 
                 Package ()
                 {
+                    "Breakless PS2", 
+                    Package ()
+                    {
+                        Package (){}, 
+                        "e06a",
+                        "e06b"
+                    }, 
+
+                    "Macro Inversion", 
+                    Package ()
+                    {
+                        Buffer ()
+                        {
+                            0xFF, 0xFF, 0x02, 0x6A, 0x00, 0x00,
+                            0x00, 0x00, 0x02, 0x5B, 0x01, 0x26
+                        }, 
+
+                        Buffer ()
+                        {
+                            0xFF, 0xFF, 0x02, 0xEA, 0x00, 0x00,
+                            0x00, 0x00, 0x01, 0x99, 0x02, 0xDB
+                        }, 
+
+                        Buffer ()
+                        {
+                            0xFF, 0xFF, 0x02, 0x6B, 0x00, 0x00,
+                            0x00, 0x00, 0x02, 0x5B, 0x01, 0x19
+                        }, 
+
+                        Buffer ()
+                        {
+                            0xFF, 0xFF, 0x02, 0xEB, 0x00, 0x00,
+                            0x00, 0x00, 0x01, 0x99, 0x02, 0xDB
+                        }
+                    }, 
+
+                    "Custom ADB Map", 
+                    Package ()
+                    {
+                        Package (){}, 
+                        "3b=4a",  // (F1) Volume Mute
+                        "3c=49",  // (F2) Volume Down
+                        "3d=48",  // (F3) Volume Up
+                        "e06a=65",  // F9
+                        "e06b=6d"  // F10
+                    }, 
+
                     "Custom PS2 Map", 
                     Package ()
                     {
                         Package (){}, 
-                        "e037=64"
+                        "e037=64",  // PrtSc=F13
+                        "40=e037",  // F9=PrtSc (Disable Trackpad)
+                        "e053=0e"  // Delete=Backspace
                     }, 
 
-                    "Swap command and option", 
+                    "Swap command and option",  // Command to Win
                     ">n"
                 }
             })
         }
     }
 
-    Scope (_SB.PCI0.SBUS) // Add BUS0 and BLC0 devices
+    Scope (_SB.PCI0.SBUS)
     {
-        Device (BUS0)
+        Device (BUS0)  // Add counterfeit BUS0 and BLC0 devices
         {
             Name (_CID, "smbus")  // _CID: Compatible ID
             Name (_ADR, Zero)  // _ADR: Address
@@ -247,7 +331,7 @@ DefinitionBlock ("", "SSDT", 2, "Lenovo", "_LIP", 0)
                 {
                     If ((Arg2 == Zero))
                     {
-                        Return (Buffer (One)
+                        Return (Buffer ()
                         {
                              0x03                                             
                         })
@@ -291,42 +375,7 @@ DefinitionBlock ("", "SSDT", 2, "Lenovo", "_LIP", 0)
         }
     }
 
-    Device (_SB.USBX) // USB Ports Power, pair with USBPorts.kext
-    {
-        Name (_ADR, Zero)  // _ADR: Address
-        Method (_STA, 0, NotSerialized)  // _STA: Status
-        {
-            If (_OSI ("Darwin"))
-            {
-                Return (0x0F)
-            }
-            Else
-            {
-                Return (Zero)
-            }
-        }
-
-        Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method
-        {
-            If (!Arg2)
-            {
-                Return (Buffer (One)
-                {
-                     0x03                                             
-                })
-            }
-
-            Return (Package ()
-            {
-                "kUSBSleepPortCurrentLimit", 
-                0x0BB8, 
-                "kUSBWakePortCurrentLimit", 
-                0x0BB8
-            })
-        }
-    }
-
-    Device (ALS0) // Add ambient light sensor device, pair with VirtualSMC.kext and SMCLightSensor.kext
+    Device (ALS0)  // Add counterfeit Ambient Light Sensor (ALS0) device, pair with VirtualSMC and SMCLightSensor kexts
     {
         Name (_HID, "ACPI0008" /* Ambient Light Sensor Device */)  // _HID: Hardware ID
         Name (_CID, "smc-als")  // _CID: Compatible ID
@@ -352,7 +401,7 @@ DefinitionBlock ("", "SSDT", 2, "Lenovo", "_LIP", 0)
         }
     }
 
-    Device (DMAC) // Add DMAC device
+    Device (DMAC)  // Add Direct Memory Access Control (DMAC) device
     {
         Name (_HID, EisaId ("PNP0200") /* PC-class DMA Controller */)  // _HID: Hardware ID
         Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
@@ -397,7 +446,54 @@ DefinitionBlock ("", "SSDT", 2, "Lenovo", "_LIP", 0)
         }
     }
 
-    Device (MEM2) // Add MEM2 device
+    Device (EC)  // Add counterfeit Embedded Controller (EC) device
+    {
+        Name (_HID, "EC000000")  // _HID: Hardware ID
+        Method (_STA, 0, NotSerialized)  // _STA: Status
+        {
+            If (_OSI ("Darwin"))
+            {
+                Return (0x0F)
+            }
+            Else
+            {
+                Return (Zero)
+            }
+        }
+    }
+    
+    Device (HPE0)  // Add counterfeit High Precision Event Timer (HPE0) device
+    {
+        Name (_HID, EisaId ("PNP0103") /* HPET System Timer */)  // _HID: Hardware ID
+        Name (_UID, Zero)  // _UID: Unique ID
+        Name (BUF0, ResourceTemplate ()
+        {
+            IRQNoFlags ()
+                {0,8}
+            Memory32Fixed (ReadWrite,
+                0xFED00000,         // Address Base
+                0x00000400,         // Address Length
+                )
+        })
+        Method (_STA, 0, NotSerialized)  // _STA: Status
+        {
+            If (_OSI ("Darwin"))
+            {
+                Return (0x0F)
+            }
+            Else
+            {
+                Return (Zero)
+            }
+        }
+
+        Method (_CRS, 0, Serialized)  // _CRS: Current Resource Settings
+        {
+            Return (BUF0) /* \HPE0.BUF0 */
+        }
+    }
+
+    Device (MEM2)  // Add MEM2 device
     {
         Name (_HID, EisaId ("PNP0C01") /* System Board */)  // _HID: Hardware ID
         Name (_UID, 0x02)  // _UID: Unique ID
@@ -430,7 +526,7 @@ DefinitionBlock ("", "SSDT", 2, "Lenovo", "_LIP", 0)
         }
     }
 
-    Device (PMCR)
+    Device (PMCR)  // Add Power Management Capabilities Register (PMCR) device
     {
         Name (_HID, EisaId ("APP9876"))  // _HID: Hardware ID
         Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
@@ -444,7 +540,7 @@ DefinitionBlock ("", "SSDT", 2, "Lenovo", "_LIP", 0)
         {
             If (_OSI ("Darwin"))
             {
-                Return (0x0B)
+                Return (0x0F)
             }
             Else
             {
@@ -453,205 +549,224 @@ DefinitionBlock ("", "SSDT", 2, "Lenovo", "_LIP", 0)
         }
     }
 
-    Device (UIAC) // USB Ports Injector, pair with USBPorts.kext
+    Device (RHUB)  // USB Ports Injector
     {
-        Name (_HID, "UIA00000")  // _HID: Hardware ID
-        Name (RMCF, Package ()
+        Name (_HID, "RHUB0000")  // _HID: Hardware ID
+        Device (HS01)  // USB 3.0 First
         {
-            "8086_9d2f", 
-            Package ()
+            Name (_ADR, One)  // _ADR: Address
+            Name (_UPC, Package ()  // _UPC: USB Port Capabilities
             {
-                "port-count", 
-                Buffer ()
-                {
-                     0x15, 0x00, 0x00, 0x00
-                }, 
+                0xFF, 
+                0x03, 
+                Zero, 
+                Zero
+            })
+        }
 
-                "ports", 
-                Package ()
-                {
-                    "HS01", 
-                    Package ()
-                    {
-                        "UsbConnector", 
-                        0x03, 
-                        "port", 
-                        Buffer ()
-                        {
-                             0x01, 0x00, 0x00, 0x00
-                        }
-                    }, 
+        Device (HS02)  // USB-C With Switch
+        {
+            Name (_ADR, 0x02)  // _ADR: Address
+            Name (_UPC, Package ()  // _UPC: USB Port Capabilities
+            {
+                0xFF, 
+                0x09, 
+                Zero, 
+                Zero
+            })
+        }
 
-                    "HS02", 
-                    Package ()
-                    {
-                        "UsbConnector", 
-                        0x09, 
-                        "port", 
-                        Buffer ()
-                        {
-                             0x02, 0x00, 0x00, 0x00
-                        }
-                    }, 
+        Device (HS03)  // USB 3.0 Second
+        {
+            Name (_ADR, 0x03)  // _ADR: Address
+            Name (_UPC, Package ()  // _UPC: USB Port Capabilities
+            {
+                0xFF, 
+                0x03, 
+                Zero, 
+                Zero
+            })
+        }
 
-                    "HS03", 
-                    Package ()
-                    {
-                        "UsbConnector", 
-                        0x03, 
-                        "port", 
-                        Buffer ()
-                        {
-                             0x03, 0x00, 0x00, 0x00                          
-                        }
-                    }, 
+        Device (HS04)
+        {
+            Name (_ADR, 0x04)  // _ADR: Address
+            Name (_UPC, Package ()  // _UPC: USB Port Capabilities
+            {
+                0xFF, 
+                0xFF, 
+                Zero, 
+                Zero
+            })
+        }
 
-                    "HS04", 
-                    Package ()
-                    {
-                        "UsbConnector", 
-                        0xFF, 
-                        "port", 
-                        Buffer ()
-                        {
-                             0x04, 0x00, 0x00, 0x00
-                        }
-                    }, 
+        Device (HS05)  // USB 2.0 SD Card Reader
+        {
+            Name (_ADR, 0x05)  // _ADR: Address
+            Name (_UPC, Package ()  // _UPC: USB Port Capabilities
+            {
+                0xFF, 
+                0xFF, 
+                Zero, 
+                Zero
+            })
+        }
 
-                    "HS05", 
-                    Package ()
-                    {
-                        "UsbConnector", 
-                        Zero, 
-                        "port", 
-                        Buffer ()
-                        {
-                             0x05, 0x00, 0x00, 0x00
-                        }
-                    }, 
+        Device (HS07)  // Bluetooth Card
+        {
+            Name (_ADR, 0x07)  // _ADR: Address
+            Name (_UPC, Package ()  // _UPC: USB Port Capabilities
+            {
+                0xFF, 
+                0xFF, 
+                Zero, 
+                Zero
+            })
+        }
 
-                    "HS06", 
-                    Package ()
-                    {
-                        "UsbConnector", 
-                        0x03, 
-                        "port", 
-                        Buffer ()
-                        {
-                             0x06, 0x00, 0x00, 0x00
-                        }
-                    }, 
+        Device (HS08)  // Integrated Camera
+        {
+            Name (_ADR, 0x08)  // _ADR: Address
+            Name (_UPC, Package ()  // _UPC: USB Port Capabilities
+            {
+                0xFF, 
+                0xFF, 
+                Zero, 
+                Zero
+            })
+        }
 
-                    "HS07", 
-                    Package ()
-                    {
-                        "UsbConnector", 
-                        0xFF, 
-                        "port", 
-                        Buffer ()
-                        {
-                             0x07, 0x00, 0x00, 0x00
-                        }
-                    }, 
+        Device (SS01)  // USB 3.0 First
+        {
+            Name (_ADR, 0x0D)  // _ADR: Address
+            Name (_UPC, Package ()  // _UPC: USB Port Capabilities
+            {
+                0xFF, 
+                0x03, 
+                Zero, 
+                Zero
+            })
+        }
 
-                    "HS08", 
-                    Package ()
-                    {
-                        "UsbConnector", 
-                        0xFF, 
-                        "port", 
-                        Buffer ()
-                        {
-                             0x08, 0x00, 0x00, 0x00
-                        }
-                    }, 
+        Device (SS02)
+        {
+            Name (_ADR, 0x0E)  // _ADR: Address
+            Name (_UPC, Package ()  // _UPC: USB Port Capabilities
+            {
+                0xFF, 
+                0x09, 
+                Zero, 
+                Zero
+            })
+        }
 
-                    "HS09", 
-                    Package ()
-                    {
-                        "UsbConnector", 
-                        0x03, 
-                        "port", 
-                        Buffer ()
-                        {
-                             0x09, 0x00, 0x00, 0x00
-                        }
-                    }, 
+        Device (SS03)  // USB 3.0 Second
+        {
+            Name (_ADR, 0x0F)  // _ADR: Address
+            Name (_UPC, Package ()  // _UPC: USB Port Capabilities
+            {
+                0xFF, 
+                0x03, 
+                Zero, 
+                Zero
+            })
+        }
 
-                    "HS10", 
-                    Package ()
-                    {
-                        "UsbConnector", 
-                        0x03, 
-                        "port", 
-                        Buffer ()
-                        {
-                             0x0A, 0x00, 0x00, 0x00
-                        }
-                    }, 
-
-                    "SS01", 
-                    Package ()
-                    {
-                        "UsbConnector", 
-                        0x03, 
-                        "port", 
-                        Buffer ()
-                        {
-                             0x0B, 0x00, 0x00, 0x00
-                        }
-                    }, 
-
-                    "SS02", 
-                    Package ()
-                    {
-                        "UsbConnector", 
-                        0x09, 
-                        "port", 
-                        Buffer ()
-                        {
-                             0x0C, 0x00, 0x00, 0x00
-                        }
-                    }, 
-
-                    "SS03", 
-                    Package ()
-                    {
-                        "UsbConnector", 
-                        0x03, 
-                        "port", 
-                        Buffer ()
-                        {
-                             0x0D, 0x00, 0x00, 0x00
-                        }
-                    }, 
-
-                    "USR1", 
-                    Package ()
-                    {
-                        "UsbConnector", 
-                        0x03, 
-                        "port", 
-                        Buffer (0x04)
-                        {
-                             0x0E, 0x00, 0x00, 0x00
-                        }
-                    }, 
-
-                    "USR2", 
-                    Package ()
-                    {
-                        "UsbConnector", 
-                        0x03, 
-                        "port", 
-                        Buffer ()
-                        {
-                             0x0F, 0x00, 0x00, 0x00
-                        }
-                    }
-                }
+        Method (_STA, 0, NotSerialized)  // _STA: Status
+        {
+            If (_OSI ("Darwin"))
+            {
+                Return (0x0F)
             }
+            Else
+            {
+                Return (Zero)
+            }
+        }
+    }
+    
+    Device (RTC0)  // Add counterfeit Real Time Clock (RTC0) device
+    {
+        Name (_HID, EisaId ("PNP0B00") /* AT Real-Time Clock */)  // _HID: Hardware ID
+        Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+        {
+            IO (Decode16,
+                0x0070,             // Range Minimum
+                0x0070,             // Range Maximum
+                0x01,               // Alignment
+                0x02,               // Length
+                )
         })
+        Method (_STA, 0, NotSerialized)  // _STA: Status
+        {
+            If (_OSI ("Darwin"))
+            {
+                Return (0x0F)
+            }
+            Else
+            {
+                Return (Zero)
+            }
+        }
+    }
+    
+    Device (TIM0)  // Add counterfeit TIM0 device
+    {
+        Name (_HID, EisaId ("PNP0100") /* PC-class System Timer */)  // _HID: Hardware ID
+        Name (_CRS, ResourceTemplate ()  // _CRS: Current Resource Settings
+        {
+            IO (Decode16,
+                0x0040,             // Range Minimum
+                0x0040,             // Range Maximum
+                0x01,               // Alignment
+                0x04,               // Length
+                )
+            IO (Decode16,
+                0x0050,             // Range Minimum
+                0x0050,             // Range Maximum
+                0x10,               // Alignment
+                0x04,               // Length
+                )
+        })
+        Method (_STA, 0, NotSerialized)  // _STA: Status
+        {
+            If (_OSI ("Darwin"))
+            {
+                Return (0x0F)
+            }
+            Else
+            {
+                Return (Zero)
+            }
+        }
+    }
+
+    Device (USBX)  // USB Ports Power
+    {
+        Name (_ADR, Zero)  // _ADR: Address
+        Method (_DSM, 4, NotSerialized)  // _DSM: Device-Specific Method
+        {
+            If ((Arg2 == Zero))
+            {
+                Return (Buffer ()
+                {
+                     0x03
+                })
+            }
+
+            Return (Package ()
+            {
+                "kUSBSleepPowerSupply", 
+                0x13EC, 
+                "kUSBSleepPortCurrentLimit", 
+                0x0834, 
+                "kUSBWakePowerSupply", 
+                0x13EC, 
+                "kUSBWakePortCurrentLimit", 
+                0x0834
+            })
+        }
+
         Method (_STA, 0, NotSerialized)  // _STA: Status
         {
             If (_OSI ("Darwin"))
