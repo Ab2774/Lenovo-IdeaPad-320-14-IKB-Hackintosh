@@ -1,6 +1,7 @@
 // WARNING: this patch is only for Lenovo IdeaPad 320-14IKB
-// May not work for your device.
-// Add MCHC device for Lenovo IdeaPad 320-14IKB.
+// May not work for your device
+// Guide: https://github.com/Ab2774/Lenovo-IdeaPad-320-14-IKB-Hackintosh
+// Add MCHC device
 
 DefinitionBlock ("", "SSDT", 2, "Lenovo", "_MCHC", 0)
 {
