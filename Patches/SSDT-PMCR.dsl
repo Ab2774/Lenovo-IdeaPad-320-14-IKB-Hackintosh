@@ -1,6 +1,7 @@
 // WARNING: this patch is only for Lenovo IdeaPad 320-14IKB
-// May not work for your device.
-// Add PMCR device for Lenovo IdeaPad 320-14IKB.
+// May not work for your device
+// Guide: https://github.com/Ab2774/Lenovo-IdeaPad-320-14-IKB-Hackintosh
+// Add Power Management Capabilities Register (PMCR) device
 
 DefinitionBlock ("", "SSDT", 2, "Lenovo", "_PMCR", 0)
 {
@@ -18,7 +19,7 @@ DefinitionBlock ("", "SSDT", 2, "Lenovo", "_PMCR", 0)
         {
             If (_OSI ("Darwin"))
             {
-                Return (0x0B)
+                Return (0x0F)
             }
             Else
             {
@@ -27,3 +28,4 @@ DefinitionBlock ("", "SSDT", 2, "Lenovo", "_PMCR", 0)
         }
     }
 }
+
