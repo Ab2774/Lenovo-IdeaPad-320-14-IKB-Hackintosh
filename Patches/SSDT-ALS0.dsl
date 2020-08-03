@@ -1,7 +1,8 @@
 // WARNING: this patch is only for Lenovo IdeaPad 320-14IKB
-// May not work for your device.
-// Add ambient light sensor device for Lenovo IdeaPad 320-14IKB.
-// Pair with VirtualSMC.kext and SMCLightSensor.kext.
+// May not work for your device
+// Guide: https://github.com/Ab2774/Lenovo-IdeaPad-320-14-IKB-Hackintosh
+// Add counterfeit Ambient Light Sensor (ALS0) device
+// Pair with VirtualSMC and SMCLightSensor kexts
 
 DefinitionBlock ("", "SSDT", 2, "Lenovo", "_ALS0", 0)
 {
@@ -31,3 +32,4 @@ DefinitionBlock ("", "SSDT", 2, "Lenovo", "_ALS0", 0)
         }
     }
 }
+
