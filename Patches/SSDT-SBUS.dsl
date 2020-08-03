@@ -1,6 +1,7 @@
 // WARNING: this patch is only for Lenovo IdeaPad 320-14IKB
-// May not work for your device.
-// Add BUS0 and BLC0 devices Lenovo IdeaPad 320 14-IKB.
+// May not work for your device
+// Guide: https://github.com/Ab2774/Lenovo-IdeaPad-320-14-IKB-Hackintosh
+// Add counterfeit BUS0 and BLC0 devices
 
 DefinitionBlock ("", "SSDT", 2, "Lenovo", "_SBUS", 0)
 {
@@ -20,9 +21,9 @@ DefinitionBlock ("", "SSDT", 2, "Lenovo", "_SBUS", 0)
                 {
                     If ((Arg2 == Zero))
                     {
-                        Return (Buffer (One)
+                        Return (Buffer ()
                         {
-                             0x03                                             
+                             0x03
                         })
                     }
 
@@ -64,3 +65,4 @@ DefinitionBlock ("", "SSDT", 2, "Lenovo", "_SBUS", 0)
         }
     }
 }
+
