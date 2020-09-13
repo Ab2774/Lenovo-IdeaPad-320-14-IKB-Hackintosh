@@ -7,6 +7,7 @@ DefinitionBlock ("", "SSDT", 2, "Lenovo", "_LIP", 0)
 {
     External (_PR_.CPU0, ProcessorObj)
     External (_SB_.PCI0, DeviceObj)
+    External (_SB_.PCI0.GPI0, DeviceObj)
     External (_SB_.PCI0.I2C0, DeviceObj)
     External (_SB_.PCI0.I2C0.TPD0, DeviceObj)
     External (_SB_.PCI0.I2C0.TPD0.SBFG, IntObj)
@@ -67,6 +68,15 @@ DefinitionBlock ("", "SSDT", 2, "Lenovo", "_LIP", 0)
         If (_OSI ("Darwin"))
         {
             If ((Arg0 == "Windows 2012"))
+            {
+                Return (0x0F)
+            }
+            Else
+            {
+                Return (Zero)
+            }
+
+            If ((Arg0 == "Windows 2015"))
             {
                 Return (0x0F)
             }
@@ -152,37 +162,70 @@ DefinitionBlock ("", "SSDT", 2, "Lenovo", "_LIP", 0)
         }
     }
     
-    Scope (_SB.PCI0.I2C0)  // Bus Speed for ELAN and Synaptics trackpad, pair with VoodooI2C kext, and _CRS to XCRS Rename Method
+    Scope (_SB.PCI0.GPI0)  // Enable ELAN and Synaptics trackpad
     {
-        If (_OSI ("Darwin"))
+        Method (_STA, 0, NotSerialized)  // _STA: Status
         {
-            Return (0x0F)
+            If (_OSI ("Darwin"))
+            {
+                Return (0x0F)
+            }
+            Else
+            {
+                Return (Zero)
+            }
         }
-        Else
+    }
+    
+    Scope (_SB.PCI0.I2C0)  // Bus Speed for ELAN and Synaptics trackpad, pair with VoodooI2C kext
+    {
+        Method (SSCN, 0, NotSerialized)
         {
-            Return (Zero)
+            If (_OSI ("Darwin"))
+            {
+                Return (Package ()
+                {
+                    0x01B0, 
+                    0x01FB, 
+                    0x1E
+                })
+            }
+            Else
+            {
+                Return (Zero)
+            }
         }
 
-        Name (SSCN, Package ()
+        Method (FMCN, 0, NotSerialized)
         {
-            0x01B0, 
-            0x01FB, 
-            0x1E
-        })
-        Name (FMCN, Package ()
-        {
-            0x48, 
-            0xA0, 
-            0x1E
-        })
+            If (_OSI ("Darwin"))
+            {
+                Return (Package ()
+                {
+                    0x0101, 
+                    0x012C, 
+                    0x62
+                })
+            }
+            Else
+            {
+                Return (Zero)
+            }
+        }
     }
 
-    Scope (_SB.PCI0.I2C0.TPD0)  // Enable ELAN and Synaptics trackpad, pair with VoodooI2C kext, and _CRS to XCRS Rename Method
+    Scope (_SB.PCI0.I2C0.TPD0)  // Enable ELAN and Synaptics trackpad, pair with VoodooI2C kext
     {
         Method (_CRS, 0, NotSerialized)  // _CRS: Current Resource Settings
         {
-            If (_OSI ("Darwin")){}
-            Return (ConcatenateResTemplate (SBFS, SBFG))
+            If (_OSI ("Darwin"))
+            {
+                Return (ConcatenateResTemplate (SBFS, SBFG))
+            }
+            Else
+            {
+                Return (Buffer (Zero){})
+            }
         }
     }
     

@@ -18,6 +18,15 @@ DefinitionBlock ("", "SSDT", 2, "Lenovo", "_XOSI", 0)
             {
                 Return (Zero)
             }
+
+            If ((Arg0 == "Windows 2015"))
+            {
+                Return (0x0F)
+            }
+            Else
+            {
+                Return (Zero)
+            }
         }
         Else
         {

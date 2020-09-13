@@ -2,7 +2,7 @@
 // May not work for your device
 // Guide: https://github.com/Ab2774/Lenovo-IdeaPad-320-14-IKB-Hackintosh
 // Fix instant wake by hooking GPRW 
-// Pair with _GPRW to XPRW Rename Method
+// Pair with GPRW to XPRW Rename Method
 
 DefinitionBlock ("", "SSDT", 2, "Lenovo", "_GPRW", 0)
 {

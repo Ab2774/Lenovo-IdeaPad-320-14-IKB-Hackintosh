@@ -65,7 +65,7 @@
 - Updated `SSDT-I2C`
 - Updated `SSDT-KBD` 
 - Updated `SSDT-PNLF` 
-- Updated `SSDT-PS2K` and renamed  as `SSDT-PS2-Map` 
+- Updated `SSDT-PS2K` and renamed as `SSDT-PS2-Map` 
 - Updated `SSDT-PrtSc-13` to support both `Clover` and `OpenCore` Bootloaders
 - Updated `SSDT-XOSI` to support both `Clover` and `OpenCore` Bootloaders
 - Updated `SSDT-Swap-Cmd-Alt`  
@@ -144,7 +144,7 @@
 - Added back `SSDT-EC` to make less renaming patches as possible
 - Added `SSDT-IRQ` for better compatibility
 - Added `macserial` Tool to generate SMBIOS for new users
-- Added `Rename Method _Q11 to XQ11` and `Rename Method _Q12 to XQ12` rename methods to both `Clover` and `OpenCore's` `config.plist`
+- Added `Rename Method _Q11 to XQ11` and `Rename Method _Q12 to XQ12` Rename Methods to both `Clover` and `OpenCore's` `config.plist`
 - Added `Quirks` section into `Clover's` `config.plist`
 - Added back `MLB` into `Clover's` `config.plist`
 - Added `run-efi-updater` into `OpenCore's` `config.plist` to support macOS Big Sur 11.0
@@ -175,3 +175,29 @@
 - Changed `UpdateSMBIOSMode` value from `Create` to `Custom` in `SMBIOS` in `OpenCore's` `config.plist`
 - Changed `JumpstartHotPlug` value from `NO` to `YES` in `APFS` `UEFI` in `OpenCore's` `config.plist` to support macOS Big Sur 11.0 Recovery (thanks @stevezhengshiqi)
 - Supports macOS Big Sur 11.0 (`OpenCore` only) & macOS Catalina 10.15.6
+
+# EFI v1.1.4
+- Updated Clover Bootloader version to `5122`
+- Updated OpenCore Bootloader version to `0.6.1`
+- Updated `AppleALC` Kext to `1.5.2`
+- Updated `Lilu` Kext to `1.4.6`
+- Updated `VoodooI2C` Kext and Satellites pre-released to `2.4.4`
+- Updated `VirtualSMC` Kext and Plug-ins to `1.1.6`
+- Updated `WhateverGreen`  to `1.4.2`
+- Updated `SSDT-I2C` to work independently without _CRS Rename Method
+- Updated `SSDT-XOSI` to support more models
+- Updated `SSDT-LIP320-14IKB` to support more models and work independently without _CRS Rename Method
+- Updated `OpenCore's` `config.plist` to support `0.6.1` changes
+- Added `HibernationFixup` Kext to support native Hibernation
+- Added back `RtcHibernateAware` in `Clover's` `config.plist` for better sleep (thanks @stevenzhengshiqi)
+- Added `Legacy` and `Linux` in `Clover` Bootloader `config.plist` for better compatibility
+- Removed `VoodooTSCSync` Kext and replaced with `CpuTscSync` Kext for better compatibility
+- Removed `Rename _CRS to XCRS` Rename from both `Clover` and `OpenCore's` Bootloaders `config.plist` because it's no longer needed
+- Removed `Inject` from  `Clover's` Bootloader `config.plist` because it's already injected
+- Removed `ig-platform-id` from  `Clover's` Bootloader `config.plist` because it's no longer needed
+- Changed `EnableSafeModeSlide` value from `YES` to `NO` in `Clover's` `config.plist` because it's no longer needed
+- Changed `ProvideConsoleGopEnable` value from `YES` to `NO` in `Clover's` `config.plist`
+- Changed `ProvideCustomSlide` value from `NO` to `YES` in `Clover's` `config.plist`
+- Changed `ResetHwSig` value from `NO` to `YES` in `Quirks` in `ACPI` in `OpenCore's` `config.plist`
+- Changed `Timeout` value from `15` to `0` in `Boot` in `Misc` in `OpenCore's` `config.plist`
+- Changed `JumpstartHotPlug` value from `YES` to `NO` in `Boot` in `Misc` in `OpenCore's` `config.plist`
