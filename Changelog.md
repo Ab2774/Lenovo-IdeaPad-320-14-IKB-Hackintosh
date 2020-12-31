@@ -192,7 +192,7 @@
 - Added back `RtcHibernateAware` in `Clover's` `config.plist` for better sleep (thanks @stevenzhengshiqi)
 - Added `Legacy` and `Linux` in `Clover` Bootloader `config.plist` for better compatibility
 - Removed `VoodooTSCSync` Kext and replaced with `CpuTscSync` Kext for better compatibility
-- Removed `Rename _CRS to XCRS` Rename from both `Clover` and `OpenCore's` Bootloaders `config.plist` because it's no longer needed
+- Removed `Rename _CRS to XCRS` Rename Patch from both `Clover` and `OpenCore's` Bootloaders `config.plist` because it's no longer needed
 - Removed `Inject` from  `Clover's` Bootloader `config.plist` because it's already injected
 - Removed `ig-platform-id` from  `Clover's` Bootloader `config.plist` because it's no longer needed
 - Changed `EnableSafeModeSlide` value from `YES` to `NO` in `Clover's` `config.plist` because it's no longer needed
@@ -201,3 +201,40 @@
 - Changed `ResetHwSig` value from `NO` to `YES` in `Quirks` in `ACPI` in `OpenCore's` `config.plist`
 - Changed `Timeout` value from `15` to `0` in `Boot` in `Misc` in `OpenCore's` `config.plist`
 - Changed `JumpstartHotPlug` value from `YES` to `NO` in `Boot` in `Misc` in `OpenCore's` `config.plist`
+
+# EFI v1.1.5
+- Updated OpenCore Bootloader version to `0.6.4`
+- Updated `AirportBrcmFixup` Kext to `2.1.2`
+- Updated `AppleALC` Kext to `1.5.5`
+- Updated `BrcmPatchRAM` Kext to `2.5.5`
+- Updated `CpuTscSync` Kext to `1.0.3`
+- Updated `HibernationFixup` Kext to `1.3.8`
+- Updated `Lilu` Kext to `1.5.0`
+- Updated `VoodooI2C` Kext and Satellites to`2.6.1`
+- Updated `VirtualSMC` Kext and Plug-ins to `1.1.9`
+- Updated `WhateverGreen`  to `1.4.5`
+- Updated `SSDT-KBD` to enable `PrtSc`, map F11 to F14 & F12 to F15, move brightness keys support to `BrightnessKeys` Kext and to fix Fn+C and Fn+P
+- Updated `SSDT-PS2-Map` to enable `PrtSc`, map F11 to F14 & F12 to F15, move brightness keys support to `BrightnessKeys` Kext and to fix Fn+C and Fn+P
+- Updated `SSDT-LIP320-14IKB` to enable `PrtSc`, map F11 to F14 & F12 to F15, move brightness keys support to `BrightnessKeys` Kext
+- Updated `OpenCore's` `config.plist` to support `0.6.4` changes
+- Added `AHCIPortFixup` Kext fix `Big Sur's` `AppleIntelPchSeriesAHCI`
+- Added `AppleBacklightSmoother` Kext to smooth backlight transition
+- Added `BrightnessKeys` Kext to support brightness keys
+- Added `RestrictEvents` Kext to replace `EFICheckDisabler`
+- Added `YogaSMC` Kext to support Fn keys, Fn Lock Mode, Hot Keys Mode, Battery Conversation Mode, and extra battery information (read the guide for more)
+- Added  `Disable RTC Wake Scheduling` in `OpenCore's` `config.plist` for better sleep
+- Removed `Rename _Q11 to XQ11` and `Rename _Q12 to XQ12` Rename Patch and replaced with `BrightnessKeys` Kext for better compatibility
+- Removed `EFICheckDisabler` and replaced with `RestrictEvents` Kext for better compatibility
+- Removed `SSDT-GPRW` ACPI and replaced with `SSDT-UPRW` ACPI for `USBWakeFixup` compatibility with `Big Sur`
+- Changed `CsrActiveConfig` value from `0x0877` to `0x30` in `Clover's` `config.plist` (thanks @stevezhengshiqi)
+- Changed `NormalizeHeaders` value from `NO` to `YES` in `Quirks` in `ACPI` in `OpenCore's` `config.plist` for better compatibility
+- Changed `EnableSafeModeSlide` value from `NO` to `YES` in `Quirks` in `Booter` in `OpenCore's` `config.plist`
+- Changed `PollAppleHotKeys` value from `NO` to `YES` in `Quirks` in `Booter` in `OpenCore's` `config.plist`
+- Changed `CsrActiveConfig` value from `77080000` to `30000000`  in `NVRAM` in `OpenCore's` `config.plist` (thanks @stevezhengshiqi)
+- Changed `MinimumVolume` value from `50` to `20` in `Audio` in `UEFI` in `OpenCore's` `config.plist`
+- Changed `VolumeAmplifier` value from `1000` to `125` in `Audio` in `UEFI` in `OpenCore's` `config.plist`
+- Changed `SanitiseClearScreen` value from `YES` to `NO` in `Output` in `UEFI` in `OpenCore's` `config.plist`
+- Changed `AppleSmcIo` value from `NO` to `YES` in `ProtocolOverrides` in `UEFI` in `OpenCore's` `config.plist`
+- Changed `FirmwareVolume` value from `NO` to `YES` in `ProtocolOverrides` in `UEFI` in `OpenCore's` `config.plist`
+- Supports macOS Big Sur 11 (`OpenCore` only) & macOS Catalina 10.15.7
+- ### Note: please read the guide again with the new releases as there are major changes you need to be aware of, and Happy New Year!

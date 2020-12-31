@@ -1,7 +1,7 @@
 // WARNING: this patch is only for Lenovo IdeaPad 320-14IKB
 // May not work for your device
 // Guide: https://github.com/Ab2774/Lenovo-IdeaPad-320-14-IKB-Hackintosh
-// Swap Command to Win
+// Swap Win to Command
 // Pair with VoodooPS2Keyboard kext (inside VoodooPS2Controller kext)
 
 DefinitionBlock ("", "SSDT", 2, "Lenovo", "_Swap", 0)
@@ -18,7 +18,7 @@ DefinitionBlock ("", "SSDT", 2, "Lenovo", "_Swap", 0)
                 Package ()
                 {
                     "Swap command and option", 
-                    ">n"
+                    ">y"
                 }
             })
         }

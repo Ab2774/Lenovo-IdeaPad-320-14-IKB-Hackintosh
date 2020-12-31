@@ -3,43 +3,10 @@
 // Guide: https://github.com/Ab2774/Lenovo-IdeaPad-320-14-IKB-Hackintosh
 // Complete keyboard patches
 // Pair with VoodooPS2Keyboard kext (inside VoodooPS2Controller kext)
-// Pair with _Q11 to XQ11 and_ Q12 to XQ12 Rename Method
 
 DefinitionBlock ("", "SSDT", 2, "Lenovo", "_PS2Map", 0)
 {
-    External (_SB_.PCI0.LPCB.EC0_, DeviceObj)
-    External (_SB_.PCI0.LPCB.EC0_.XQ11, MethodObj)    // 0 Arguments
-    External (_SB_.PCI0.LPCB.EC0_.XQ12, MethodObj)    // 0 Arguments
     External (_SB_.PCI0.LPCB.PS2K, DeviceObj)
-
-    Scope (_SB.PCI0.LPCB.EC0)
-    {
-        Method (_Q11, 0, NotSerialized)  // _Q11: EC Query
-        {
-            If (_OSI ("Darwin"))
-            {
-                Notify (PS2K, 0x0357)  // (F11) Brightness Down
-                Notify (PS2K, 0x0365)  // (F14) Brightness Down
-            }
-            Else
-            {
-                \_SB.PCI0.LPCB.EC0.XQ11 ()
-            }
-        }
-
-        Method (_Q12, 0, NotSerialized)  // _Q12: EC Query
-        {
-            If (_OSI ("Darwin"))
-            {
-                Notify (PS2K, 0x0358)  // (F12) Brightness Up
-                Notify (PS2K, 0x0366)  // (F15) Brightness Up
-            }
-            Else
-            {
-                \_SB.PCI0.LPCB.EC0.XQ12 ()
-            }
-        }
-    }
 
     Scope (_SB.PCI0.LPCB.PS2K)
     {
@@ -94,7 +61,9 @@ DefinitionBlock ("", "SSDT", 2, "Lenovo", "_PS2Map", 0)
                         "3c=49",  // (F2) Volume Down
                         "3d=48",  // (F3) Volume Up
                         "e06a=65",  // F9
-                        "e06b=6d"  // F10
+                        "e06b=6d",  // F10
+                        "57=6b",  // F11=14
+                        "58=71"  // F12=F15
                     }, 
 
                     "Custom PS2 Map", 
@@ -103,9 +72,13 @@ DefinitionBlock ("", "SSDT", 2, "Lenovo", "_PS2Map", 0)
                         Package (){}, 
                         "e037=64",  // PrtSc=F13
                         "40=e037",  // F9=PrtSc (Disable Trackpad)
-                        "e053=0e"  // Delete=Backspace
+                        "e053=0e",  // Delete=Backspace
+                        "46=2e",  // Fn+C=C
+                        "e045=19"  // Fn+P=P
                     }, 
 
+                    "RemapPrntScr",  // Enable PrtSc
+                    ">y" 
                     "Swap command and option",  // Command to Win
                     ">n"
                 }

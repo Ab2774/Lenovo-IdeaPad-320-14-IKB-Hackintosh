@@ -11,7 +11,7 @@ A guide for installing macOS Catalina on Lenovo IdeaPad 320-14IKB using Clover a
 I'm not an expert in hackintoshing, this is my first Hackintosh, I managed to get everything working in my laptop, your laptop may be different than mine, higher specifications, dedicated GPU, etc, it's not guaranteed to work a %100, if it's so then this guide may not work for you, be careful and good luck!
 
 # Laptop's Hardware 
-- <b>CPU</b>: Intel i5 7200U Dual-Core CPU (Kaby Lake-U)
+- <b>CPU</b>: Intel [i5 7200U](https://ark.intel.com/content/www/us/en/ark/products/95443/intel-core-i5-7200u-processor-3m-cache-up-to-3-10-ghz.html) Dual-Core CPU (Kaby Lake-U)
 - <b>GPU</b>: Intel HD 620 Graphics 
 - <b>Storage</b>: 500GB WD Blue Solid State Drive & 2TB Seagate Mobile Hard Drive (Upgraded)
 - <b>RAM</b>: 12 GB DDR4 2133MHz (Upgraded)
@@ -34,19 +34,25 @@ This laptop is a budget laptop, by these specs, you can't do some heavy work, ba
 - Wi-Fi & Bluetooth (including Apple services)
 - Internal webcam with Facetime
 - ELAN Trackpad with GPIO mode (including gestures)
-- Sleep (lid sleep and lid wake)
+- Sleep (hibernation, lid sleep and lid wake)
 - Native macOS Hibernation
-- Screen Brightness with hotkeys
-- macOS 10.13 High Sierra, 10.14 Mojave, and 10.15 Catalina
+- Screen Brightness with Hotkeys
+- Fn keys and Hotkeys lock
+- macOS 10.13 High Sierra, 10.14 Mojave, and 10.15 Catalina, Big Sur 11
 
 # What's Not Working?
 - Apple Pay, requires TouchID, more information [here](https://discussions.apple.com/thread/7808558)
+
 # Bugs
 - DRM support (iTunes Movies, Apple TV+, Amazon Prime and Netflix, and others) could be fixed in the future, more information [here](https://github.com/acidanthera/bugtracker/issues/586) and [here](https://www.tonymacx86.com/threads/an-idiots-guide-to-lilu-and-its-plug-ins.260063/#DRM).
+- No sound if power unplugged or mic is being used after sleep, see https://github.com/Ab2774/Lenovo-IdeaPad-320-14-IKB-Hackintosh/issues/2.
+- Microphone doesn't work in Chrome or Firefox, see https://github.com/Ab2774/Lenovo-IdeaPad-320-14-IKB-Hackintosh/issues/3.
+- Lowest brightness, in real Macs, the lowest brightness turns the screen completely black, however, `AppleBacklightSmoother` Kext doesn`t support this feature yet.
+- Screen light-up after wake, in `Big Sur` a second keyboard click is required to light up the screen, this can be fixed but it will break sleep causing instant wake.
 
 # Requirement 
 - 16GB USB drive 
-- macOS Catalina image downloaded from the Appstore 
+- macOS Big Sur image downloaded from the Appstore 
 - ~Mouse, because trackpad won't work in the installation~ Fixed with VoodooI2C v2.4
 
 # BIOS Configuration
@@ -57,7 +63,7 @@ Before doing anything, make sure to update your BIOS to the latest version from 
 - "Exit" <b>OS Optimized Defaults</b> to <b>Disabled</b>.
 
 # Installation
-After downloading macOS Catalina from the AppStore (do not use a distro image like Hackintosh Zone otherwise it's gonna break your system and you won't get any support using it), format your USB drive as "Mac OS Extended (Journaled)", then open Terminal and type: `sudo /Applications/Install\ macOS\ Catalina.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume`, and remember, `MyVolume` is for the name of your USB drive, you can change it if you would, mount the EFI partition in your USB, Copy-and-paste the folder `EFI` from this release's repository, unzip `SMBIOS Generator`, open Terminal and drag-and-drop macserial to the terminal window, then type `--generate-all`  and press<kbd> enter</kbd>, then copy MacBookPro14,1 SMBIOS (which is the closest one to this laptop's hardware) and change it, copy to both Clover's config.plist and OpenCore's config.plist, update your kexts and Clover Bootloader or OpenCore (if a new update is available), reboot your laptop and press `F12` to enter `BIOS Menu`, choose your USB installer and boot from it, you should see the `Clover Boot Menu`, boot from the USB that shown, it may take some time to boot, after is done, you should see `macOS Utilities`, choose `Disk Utility` and erase the drive you want to install macOS on it, click on `Erase` and type the name that you want, like: "Macintosh HD", choose the format as `APFS` and `Scheme` as `GUID Partition Map` and click `Erase`, after it's done, close the window and go back to `macOS Utilities` and choose `Install macOS`, click `Agree` to accept the license agreement, the installation should starts now, your laptop should restarts several times, after it's done, login to your AppleID (for more specific guide please go [here](https://dortania.github.io/oc-laptop-guide/)), after setting up your laptop, unzip the folder `ALCPlugFix`, run `install.command` and type your password, this is gonna fix the static noise from your headphone after sleep, install Sniki's `CodecCommander` kext which can be found [here](https://github.com/Sniki/EAPD-Codec-Commander) to `/Library/Extensions` by running the command `KextInstall.command`, if you have problems with sleep please go [here](https://dortania.github.io/oc-laptop-guide/battery-power-management/correcting-sleep-problems.html)
+After downloading macOS Big Sur from the AppStore (do not use a distro image like Hackintosh Zone otherwise it's gonna break your system and you won't get any support using it), format your USB drive as "Mac OS Extended (Journaled)", then open Terminal and type: `sudo /Applications/Install\ macOS\ Big\ Sur\.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume`, and remember, `MyVolume` is for the name of your USB drive, you can change it if you would, mount the EFI partition in your USB, Copy-and-paste the folder `EFI` from this release's repository, unzip `SMBIOS Generator`, open Terminal and drag-and-drop macserial to the terminal window, then type `--generate-all`  and press<kbd> enter</kbd>, then copy MacBookPro14,1 SMBIOS (which is the closest one to this laptop's hardware) and change it, copy to both Clover's config.plist and OpenCore's config.plist, update your kexts and Clover Bootloader or OpenCore (if a new update is available), reboot your laptop and press `F12` to enter `BIOS Menu`, choose your USB installer and boot from it, you should see the `Clover Boot Menu`, boot from the USB that shown, it may take some time to boot, after is done, you should see `macOS Utilities`, choose `Disk Utility` and erase the drive you want to install macOS on it, click on `Erase` and type the name that you want, like: "Macintosh HD", choose the format as `APFS` and `Scheme` as `GUID Partition Map` and click `Erase`, after it's done, close the window and go back to `macOS Utilities` and choose `Install macOS`, click `Agree` to accept the license agreement, the installation should starts now, your laptop should restarts several times, after it's done, login to your AppleID (for more specific guide please go [here](https://dortania.github.io/oc-laptop-guide/)), after setting up your laptop, unzip the folder, (please delete CodecComannder and ALCPlugFix as they're no longer required with AppleALC 1.5.4), if you have problems with sleep please go [here](https://dortania.github.io/oc-laptop-guide/battery-power-management/correcting-sleep-problems.html)
 restart, and you're ready to go!
 
 # Extras
@@ -71,13 +77,14 @@ OpenCore:
 - If you don't like the name of your laptop that shown in "About This Mac", you can change it! Press Shift+Cmd+G <kbd>⇧⌘G</kbd> and copy-and-paste this path: `/Users/Username/Library/Preferences/com.apple.SystemProfiler.plist`, and remember, the word `Username` Is for your username, now download your favorite plist editor (mine is "PilstEdit Pro"), then you can change to `Lenovo IdeaPad 320-14IKB (80XK)` or any name you want.
 ![](Images/Edit.png)
 ![](Images/About_This_Mac.png)
-- The keyboard experience on this laptop is a bit different than a real mac, in order to make the closest to a real mac we need to make a couple of changes, first we need to swap <kbd>Cmd</kbd> to <kbd>Win</kbd> using `SSDT-Swap-Cmd-Alt` (or swap them in `System Preferences` as shown in the photo), to prevent <kbd>PrtSc</kbd> from disabling trackpad we need to remap it as <kbd>F13</kbd> (can be remaped to take screenshots and record videos as shown in the photo) and remap <kbd>F6</kbd> as <kbd>PrtSc</kbd> to disable trackpad, to make <kbd>Delete</kbd> key working like a real Mac we need to remap it as <kbd>Backspace</kbd>, in some models the brightness keys are <kbd>F11</kbd> and <kbd>F12</kbd>, or <kbd>F14</kbd> and <kbd>F15</kbd>, in `SSDT-KBD` and `SSDT-KBD` there's two queries for brightness up and brightness down and under each one of them two notifies for both of them, when pressing the desired button it will trigger both the brightness key and the another key simutaneously, which will make a feedback sound, to fix that hold `Fn` key and press the brightness key, if the brightness level changes that means that it's <kbd>F11</kbd> and <kbd>F12</kbd>, but if nothing happens that means that the brightness keys are <kbd>F14</kbd> and <kbd>F15</kbd>, to delete the unneeded notify highlight it and delete it using MaciASL which can be found [here](https://github.com/acidanthera/MaciASL), then compile it and replace it, if you want to use all the patches there's an SSDT that combines them all which is `SSDT-PS2-Map`, avoid using all of them to prevent having a `Kernel Panic`.
+- Fn keys don't work usually on most hackintoshes, luckily, `YogaSMC` can fix this! Not just enabling Fn keys and their abilities, it enables Lenovo features like `Conversation Mode` to stop charging the battery at %60 to increase it's age, ture Cycle Count reading because macOS ones can be wrong, `Fn Mode` etc, to get those features, `YogaSMC` is included inside the EFIs, all you have to do is install `YogaSMCNC` app and `YogaSMCPane` which are included in the release.
+- The keyboard experience on this laptop is a bit different than a real mac, in order to make the closest to a real mac we need to make a couple of changes, luckily, in the latest `VoodooPS2` release, it automatically swaps <kbd>Cmd</kbd> to <kbd>Win</kbd>, if you want to reverse it, use `SSDT-Swap-Alt-Cmd` (or swap them in `System Preferences` as shown in the photo), to prevent <kbd>PrtSc</kbd> from disabling trackpad we need to remap it as <kbd>F13</kbd> (can be remaped to take screenshots and record videos as shown in the photo) and remap <kbd>F6</kbd> as <kbd>PrtSc</kbd> to disable trackpad, to make <kbd>Delete</kbd> key working like a real Mac we need to remap it as <kbd>Backspace</kbd>, `BrightnessKeys` Kext automatically remaps brightness keys without any ACPI requirements, if your brightness keys are <kbd>F11</kbd> and <kbd>F12</kbd>, please remove these two lines using MaciASL which can be found [here](https://github.com/acidanthera/MaciASL) as they are not required and will affect brightness keys in `Fn Mode`, then compile it and replace it, if your brightness keys are <kbd>F14</kbd> and <kbd>F15</kbd>, you're good to go! If you want to use all keyboard patches, there's an SSDT that combines them all which is `SSDT-PS2-Map`, please avoid using all of them to prevent having a `Kernel Panic`.
 ![](Images/Keyboard.png)
 ![](Images/Remap.png)
 ![](Images/Brightness.png)
 - Who needs CDs these days? You can buy this caddy and replace it with the CD Drive from [here](https://www.aliexpress.com/item/32850001303.html) to get dual drives.
 - 4GB of ram isn't enough these days, Unfortunately, 4GB is built-in the motherboard, so the maximum is 12GB, you can upgrade your RAM to 12GB total from [here](https://www.amazon.com/Corsair-Module-2133MHz-Unbuffered-SODIMM/dp/B0143UM6Y0/ref=sr_1_6?dchild=1&keywords=8+ram+2133&qid=1585516185&s=electronics&sr=1-6).
-- The Wi-Fi card that shipped with this laptop is probably an Intel Wi-Fi card, there's a kexts for it under development which can be found [here](https://github.com/AppleIntelWifi/adapter) and [here](https://github.com/OpenIntelWireless/itlwm), but for now, you can buy the BCM94360CS2, an Apple wifi card for this laptop for less than 40$ (USD), nowadays, The DW1560 is quite expensive and it's not natively supported by Apple, fortunately, I bought it before it becomes expensive, you can buy it instead of the DW1560, no kexts needed because it's natively supported by macOS [The Wi-Fi Card](https://www.aliexpress.com/item/32637520988.html?trace=wwwdetail2mobilesitedetail&spm=a2g0s.9042311.0.0.5e204c4dWDlWnx), [The Adapter](https://www.aliexpress.com/item/4000300306817.html?trace=wwwdetail2mobilesitedetail&trace=wwwdetail2mobilesitedetail&spm=a2g0s.9042311.0.0.5e204c4dWDlWnx), [The Antennas](https://www.aliexpress.com/item/32862630916.html?trace=wwwdetail2mobilesitedetail&spm=a2g0s.9042311.0.0.5e204c4dWDlWnx).
+- The Wi-Fi card that shipped with this laptop is probably an Intel Wi-Fi card which can be fixed with `itlwm` Kext which can be found [here](https://github.com/OpenIntelWireless/itlwm), please check all supported cards before buying from [here](https://openintelwireless.github.io/itlwm/Compat.html), there's another option which is buying a Broadcom Card like DW1560 and DW1830, please check all supported cards before buying from [here](https://dortania.github.io/Wireless-Buyers-Guide/unsupported.html), or you can buy an Apple Wi-Fi Card like BCM94360CS2, [The Wi-Fi Card](https://www.aliexpress.com/item/32637520988.html?trace=wwwdetail2mobilesitedetail&spm=a2g0s.9042311.0.0.5e204c4dWDlWnx), [The Adapter](https://www.aliexpress.com/item/4000300306817.html?trace=wwwdetail2mobilesitedetail&trace=wwwdetail2mobilesitedetail&spm=a2g0s.9042311.0.0.5e204c4dWDlWnx), [The Antennas](https://www.aliexpress.com/item/32862630916.html?trace=wwwdetail2mobilesitedetail&spm=a2g0s.9042311.0.0.5e204c4dWDlWnx).
 - You can change the frequency of your CPU in `config.plist` as shown in the photo, without changing it, macOS will recognize it as 2.71 GHz for some-reason. 
 ![](Images/CPU.png)
 - You can change the name of your graphics like this, I chose the name `Intel HD Graphics 620 macOS Edition` you can choose whatever you want as shown in the photo.
@@ -103,12 +110,13 @@ OpenCore:
 # Credits
 - [Apple](https://www.apple.com) for macOS.
 - [Acidanthera](https://github.com/acidanthera) for most of the kexts.
-- [goodwin](https://github.com/goodwin) for ALCPlugFix.
-- [RehabMan](https://github.com/RehabMan) for some patches.
+- [RehabMan](https://github.com/RehabMan) for some ACPI patches.
 - [Steve Zheng](https://github.com/stevezhengshiqi) for some patches.
+- [zhen-zen](https://github.com/zhen-zen) for YogaSMC.
+- [Hiep Bao Le](https://github.com/hieplpvip) for AppleBacklightSmoother
 - [Sniki](https://github.com/Sniki) for some patches.
-- [daliansky](https://github.com/daliansky) for some patches.
-- [Moh_Ameen](https://github.com/ameenjuz) for some patches.
+- [daliansky](https://github.com/daliansky) for some ACPI patches.
+- [Moh_Ameen](https://github.com/ameenjuz) for some ACPI patches.
 - [blackosx](https://github.com/blackosx/OpenCanopyIcons) for OpenCanopyIcons theme.
 - [al3xtjames](https://github.com/al3xtjames) for clover-theme-oss theme.
 - [ImmersiveX](https://github.com/ImmersiveX) for clover-theme-minimal-dark theme.
