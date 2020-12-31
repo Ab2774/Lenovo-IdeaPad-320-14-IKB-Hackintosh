@@ -3,7 +3,7 @@
 [![Chat](https://img.shields.io/badge/chat-tonymacx86-red.svg)](https://www.tonymacx86.com/threads/guide-lenovo-ideapad-320-14ikb-clover-and-opencore-uefi-hotpatch.293387/)
 
 
-A guide for installing macOS Catalina on Lenovo IdeaPad 320-14IKB using Clover and OpenCore UEFI hotpatch.
+A guide for installing macOS Big Sur on Lenovo IdeaPad 320-14IKB using Clover and OpenCore UEFI hotpatch.
 ![](Images/Laptop.png)
 
 
