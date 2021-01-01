@@ -78,7 +78,7 @@ DefinitionBlock ("", "SSDT", 2, "Lenovo", "_PS2Map", 0)
                     }, 
 
                     "RemapPrntScr",  // Enable PrtSc
-                    ">y" 
+                    ">y", 
                     "Swap command and option",  // Command to Win
                     ">n"
                 }

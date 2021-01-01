@@ -78,7 +78,7 @@ DefinitionBlock ("", "SSDT", 2, "Lenovo", "_KBD", 0)
                     }, 
 
                     "RemapPrntScr",  // Enable PrtSc
-                    ">y" 
+                    ">y", 
                     "Swap command and option",  // Win to Command
                     ">y"
                 }

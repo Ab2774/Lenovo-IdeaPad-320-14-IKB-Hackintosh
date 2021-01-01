@@ -11,7 +11,7 @@ A guide for installing macOS Big Sur on Lenovo IdeaPad 320-14IKB using Clover an
 I'm not an expert in hackintoshing, this is my first Hackintosh, I managed to get everything working in my laptop, your laptop may be different than mine, higher specifications, dedicated GPU, etc, it's not guaranteed to work a %100, if it's so then this guide may not work for you, be careful and good luck!
 
 # Laptop's Hardware 
-- <b>CPU</b>: Intel [i5 7200U](https://ark.intel.com/content/www/us/en/ark/products/95443/intel-core-i5-7200u-processor-3m-cache-up-to-3-10-ghz.html) Dual-Core CPU (Kaby Lake-U)
+- <b>CPU</b>: [Intel i5 7200U](https://ark.intel.com/content/www/us/en/ark/products/95443/intel-core-i5-7200u-processor-3m-cache-up-to-3-10-ghz.html) Dual-Core CPU (Kaby Lake-U)
 - <b>GPU</b>: Intel HD 620 Graphics 
 - <b>Storage</b>: 500GB WD Blue Solid State Drive & 2TB Seagate Mobile Hard Drive (Upgraded)
 - <b>RAM</b>: 12 GB DDR4 2133MHz (Upgraded)
@@ -34,11 +34,11 @@ This laptop is a budget laptop, by these specs, you can't do some heavy work, ba
 - Wi-Fi & Bluetooth (including Apple services)
 - Internal webcam with Facetime
 - ELAN Trackpad with GPIO mode (including gestures)
-- Sleep (hibernation, lid sleep and lid wake)
+- Sleep (hibernation, lid sleep, and lid wake)
 - Native macOS Hibernation
 - Screen Brightness with Hotkeys
 - Fn keys and Hotkeys lock
-- macOS 10.13 High Sierra, 10.14 Mojave, and 10.15 Catalina, Big Sur 11
+- macOS 10.13 High Sierra, 10.14 Mojave, 10.15 Catalina, and Big Sur 11
 
 # What's Not Working?
 - Apple Pay, requires TouchID, more information [here](https://discussions.apple.com/thread/7808558)
