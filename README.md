@@ -38,7 +38,7 @@ This laptop is a budget laptop, by these specs, you can't do some heavy work, ba
 - Native macOS Hibernation
 - Screen Brightness with Hotkeys
 - Fn keys and Hotkeys lock
-- macOS 10.13 High Sierra, 10.14 Mojave, 10.15 Catalina, and Big Sur 11
+- macOS 10.13 High Sierra, 10.14 Mojave, 10.15 Catalina, Big Sur 11, Monterey 12
 
 # What's Not Working?
 - Apple Pay, requires TouchID, more information [here](https://discussions.apple.com/thread/7808558)
@@ -46,9 +46,10 @@ This laptop is a budget laptop, by these specs, you can't do some heavy work, ba
 # Bugs
 - DRM support (iTunes Movies, Apple TV+, Amazon Prime and Netflix, and others) could be fixed in the future, more information [here](https://github.com/acidanthera/bugtracker/issues/586) and [here](https://www.tonymacx86.com/threads/an-idiots-guide-to-lilu-and-its-plug-ins.260063/#DRM).
 - No sound if power unplugged or mic is being used after sleep, see https://github.com/Ab2774/Lenovo-IdeaPad-320-14-IKB-Hackintosh/issues/2.
-- Microphone doesn't work in Chrome or Firefox, see https://github.com/Ab2774/Lenovo-IdeaPad-320-14-IKB-Hackintosh/issues/3.
+- Microphone doesn't work on Google Chrome or Firefox, see https://github.com/Ab2774/Lenovo-IdeaPad-320-14-IKB-Hackintosh/issues/3.
 - Lowest brightness, in real Macs, the lowest brightness turns the screen completely black, however, `AppleBacklightSmoother` Kext doesn`t support this feature yet.
-- Screen light-up after wake, in `Big Sur` a second keyboard click is required to light up the screen, this can be fixed but it will break sleep causing instant wake.
+- Screen light-up after wake, in macOS 11 `Big Sur`, a second keyboard click is required to light up the screen, this can be fixed but it will break sleep causing instant wake.
+- Bluetooth and Sleep don't seem to work in macOS 12 `Monterey`, for now, could be fixed since it's the first `Beta`
 
 # Requirement 
 - 16GB USB drive 

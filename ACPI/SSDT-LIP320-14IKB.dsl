@@ -8,7 +8,6 @@ DefinitionBlock ("", "SSDT", 2, "Lenovo", "_LIP", 0)
     External (_PR_.CPU0, ProcessorObj)
     External (_SB_.PCI0, DeviceObj)
     External (_SB_.PCI0.GPI0, DeviceObj)
-    External (_SB_.PCI0.I2C0, DeviceObj)
     External (_SB_.PCI0.I2C0.TPD0, DeviceObj)
     External (_SB_.PCI0.I2C0.TPD0.SBFG, IntObj)
     External (_SB_.PCI0.I2C0.TPD0.SBFS, IntObj)
@@ -159,7 +158,7 @@ DefinitionBlock ("", "SSDT", 2, "Lenovo", "_LIP", 0)
         }
     }
     
-    Scope (_SB.PCI0.GPI0)  // Enable ELAN and Synaptics trackpad
+    Scope (_SB.PCI0.GPI0)  // Enable ELAN and Synaptics Trackpad
     {
         Method (_STA, 0, NotSerialized)  // _STA: Status
         {
@@ -174,44 +173,7 @@ DefinitionBlock ("", "SSDT", 2, "Lenovo", "_LIP", 0)
         }
     }
     
-    Scope (_SB.PCI0.I2C0)  // Bus Speed for ELAN and Synaptics trackpad, pair with VoodooI2C kext
-    {
-        Method (SSCN, 0, NotSerialized)
-        {
-            If (_OSI ("Darwin"))
-            {
-                Return (Package ()
-                {
-                    0x01B0, 
-                    0x01FB, 
-                    0x1E
-                })
-            }
-            Else
-            {
-                Return (Zero)
-            }
-        }
-
-        Method (FMCN, 0, NotSerialized)
-        {
-            If (_OSI ("Darwin"))
-            {
-                Return (Package ()
-                {
-                    0x0101, 
-                    0x012C, 
-                    0x62
-                })
-            }
-            Else
-            {
-                Return (Zero)
-            }
-        }
-    }
-
-    Scope (_SB.PCI0.I2C0.TPD0)  // Enable ELAN and Synaptics trackpad, pair with VoodooI2C kext
+    Scope (_SB.PCI0.I2C0.TPD0)  // Enable ELAN and Synaptics Trackpad, pair with VoodooI2C kext
     {
         Method (_CRS, 0, NotSerialized)  // _CRS: Current Resource Settings
         {

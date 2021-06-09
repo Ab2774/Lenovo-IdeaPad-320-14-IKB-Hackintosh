@@ -60,7 +60,7 @@
 - Updated `VirtualSMC` Kext and Plug-ins to `1.1.3`
 - Updated `VoodooPS2Controller` Kext to `2.1.4`
 - Updated `VoodooI2C` Kext and Satellites to `2.4.1`
-- Updated `WhateverGreen`  to `1.3.9`
+- Updated `WhateverGreen` Kext to `1.3.9`
 - Updated `SSDT-ALS0`
 - Updated `SSDT-I2C`
 - Updated `SSDT-KBD` 
@@ -92,7 +92,7 @@
 - Updated `VirtualSMC` Kext and Plug-ins to `1.1.4`
 - Updated `VoodooI2C` Kext and Satellites  to `2.4.3`
 - Updated `USBports` Kext for better sleep
-- Updated `WhateverGreen`  to `1.4.0`
+- Updated `WhateverGreen` Kext to `1.4.0`
 - Updated `SSDT-ALS0` to support more models
 - Updated `SSDT-DMAC` to support more models
 - Updated `SSDT-GPRW` with fixing typo
@@ -183,7 +183,7 @@
 - Updated `Lilu` Kext to `1.4.6`
 - Updated `VoodooI2C` Kext and Satellites pre-released to `2.4.4`
 - Updated `VirtualSMC` Kext and Plug-ins to `1.1.6`
-- Updated `WhateverGreen`  to `1.4.2`
+- Updated `WhateverGreen` Kext to `1.4.2`
 - Updated `SSDT-I2C` to work independently without _CRS Rename Method
 - Updated `SSDT-XOSI` to support more models
 - Updated `SSDT-LIP320-14IKB` to support more models and work independently without _CRS Rename Method
@@ -212,12 +212,12 @@
 - Updated `Lilu` Kext to `1.5.0`
 - Updated `VoodooI2C` Kext and Satellites to`2.6.1`
 - Updated `VirtualSMC` Kext and Plug-ins to `1.1.9`
-- Updated `WhateverGreen`  to `1.4.5`
+- Updated `WhateverGreen` Kext to `1.4.5`
 - Updated `SSDT-KBD` to enable `PrtSc`, map F11 to F14 & F12 to F15, move brightness keys support to `BrightnessKeys` Kext and to fix Fn+C and Fn+P
 - Updated `SSDT-PS2-Map` to enable `PrtSc`, map F11 to F14 & F12 to F15, move brightness keys support to `BrightnessKeys` Kext and to fix Fn+C and Fn+P
 - Updated `SSDT-LIP320-14IKB` to enable `PrtSc`, map F11 to F14 & F12 to F15, move brightness keys support to `BrightnessKeys` Kext
 - Updated `OpenCore's` `config.plist` to support `0.6.4` changes
-- Added `AHCIPortFixup` Kext fix `Big Sur's` `AppleIntelPchSeriesAHCI`
+- Added `AHCIPortFixup` Kext to fix `Big Sur's` `AppleIntelPchSeriesAHCI`
 - Added `AppleBacklightSmoother` Kext to smooth backlight transition
 - Added `BrightnessKeys` Kext to support brightness keys
 - Added `RestrictEvents` Kext to replace `EFICheckDisabler`
@@ -238,3 +238,20 @@
 - Changed `FirmwareVolume` value from `NO` to `YES` in `ProtocolOverrides` in `UEFI` in `OpenCore's` `config.plist`
 - Supports macOS Big Sur 11 (`OpenCore` only) & macOS Catalina 10.15.7
 - ### Note: please read the guide again with the new releases as there are major changes you need to be aware of, and Happy New Year!
+
+# EFI v1.1.6
+- Updated OpenCore Bootloader version to `0.7.0`
+- Updated `AirportBrcmFixup` Kext to `2.1.3` to Support macOS 12 `Monterey`
+- Updated `AppleALC` Kext to `1.6.2` to Support macOS 12 `Monterey`
+- Updated `AppleBacklightSmoother` Kext to `1.0.3` to Support macOS 12 `Monterey`
+- Updated `CpuTscSync` Kext to `1.0.4` to Support macOS 12 `Monterey`
+- Updated `HibernationFixup` Kext to `1.4.1` to Support macOS 12 `Monterey`
+- Updated `Lilu` Kext to `1.5.4` to Support macOS 12 `Monterey`
+- Updated `RestrictEvents` Kext to `1.0.3` to Support macOS 12 `Monterey`
+- Updated `VoodooI2C` Kext and Satellites to`2.6.5`
+- Updated `VirtualSMC` Kext and Plug-ins to `1.2.5` to Support macOS 12 `Monterey`
+- Updated `WhateverGreen` Kext to `1.5.1` to Support macOS 12 `Monterey`
+- Updated `YogaSMC` Kext and Plug-ins to `1.5.1`
+- Updated `OpenCore's` `config.plist` to support `0.7.0` changes
+- Supports macOS 12 `Monterey`
+- ### Note: please read the guide again with the new releases as there are major changes you need to be aware of, and Pride Month!
