@@ -1,7 +1,7 @@
 # Lenovo-IdeaPad 320-14IKB Hackintosh Changelog
 
 # EFI v1.0.0
-- First release!
+- Initial release!
 
 
 # EFI v1.1.0
@@ -71,7 +71,7 @@
 - Updated `SSDT-Swap-Cmd-Alt`  
 - Updated `layout-id` property in `config.plist` 
 - Updated `HFSPlus` Driver for `Clover` Bootloader
-- Updated `clover-theme-oss` icons with high quality ones and fixed font
+- Updated `clover-theme-oss` icons with high-quality ones and fixed font
 - Added `OpenCore` Bootloader!
 - Added `NTFS` Driver for `Clover` Bootloader
 - Added `device-id` property in `config.plist` for `Audio` device
@@ -249,7 +249,7 @@
 - Updated `HibernationFixup` Kext to `1.4.1` to Support macOS 12 `Monterey`
 - Updated `Lilu` Kext to `1.5.4` to Support macOS 12 `Monterey`
 - Updated `RestrictEvents` Kext to `1.0.3` to Support macOS 12 `Monterey`
-- Updated `VoodooI2C` Kext and Satellites to`2.6.5`
+- Updated `VoodooI2C` Kext and Satellites to `2.6.5`
 - Updated `VirtualSMC` Kext and Plug-ins to `1.2.5` to Support macOS 12 `Monterey`
 - Updated `WhateverGreen` Kext to `1.5.1` to Support macOS 12 `Monterey`
 - Updated `YogaSMC` Kext and Plug-ins to `1.5.1`
