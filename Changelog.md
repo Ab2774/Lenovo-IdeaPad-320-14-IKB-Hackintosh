@@ -240,6 +240,7 @@
 - ### Note: please read the guide again with the new releases as there are major changes you need to be aware of, and Happy New Year!
 
 # EFI v1.1.6
+- Updated Clover Bootloader version to `5136`
 - Updated OpenCore Bootloader version to `0.7.0`
 - Updated `AirportBrcmFixup` Kext to `2.1.3` to Support macOS 12 `Monterey`
 - Updated `AppleALC` Kext to `1.6.2` to Support macOS 12 `Monterey`
