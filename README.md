@@ -38,7 +38,7 @@ This laptop is a budget laptop, by these specs, you can't do some heavy work, ba
 - Native macOS Hibernation
 - Screen Brightness with Hotkeys
 - Fn keys and Hotkeys lock
-- macOS 10.13 High Sierra, 10.14 Mojave, 10.15 Catalina, Big Sur 11, Monterey 12
+- macOS High Sierra 10.13, Mojave 10.14, Catalina 10.15, Big Sur 11, Monterey 12
 
 # What's Not Working?
 - Apple Pay, requires TouchID, more information [here](https://discussions.apple.com/thread/7808558)
@@ -47,9 +47,9 @@ This laptop is a budget laptop, by these specs, you can't do some heavy work, ba
 - DRM support (iTunes Movies, Apple TV+, Amazon Prime and Netflix, and others) could be fixed in the future, more information [here](https://github.com/acidanthera/bugtracker/issues/586) and [here](https://www.tonymacx86.com/threads/an-idiots-guide-to-lilu-and-its-plug-ins.260063/#DRM).
 - No sound if power unplugged or mic is being used after sleep, see https://github.com/Ab2774/Lenovo-IdeaPad-320-14-IKB-Hackintosh/issues/2.
 - Microphone doesn't work on Google Chrome or Firefox, see https://github.com/Ab2774/Lenovo-IdeaPad-320-14-IKB-Hackintosh/issues/3.
-- Lowest brightness, in real Macs, the lowest brightness turns the screen completely black, however, `AppleBacklightSmoother` Kext doesn`t support this feature yet.
-- Screen light-up after wake, in macOS 11 `Big Sur`, a second keyboard click is required to light up the screen, this can be fixed but it will break sleep causing instant wake.
-- Bluetooth and Sleep don't seem to work in macOS 12 `Monterey`, for now, could be fixed since it's the first `Beta`
+- Lowest brightness, in real Macs, the lowest brightness turns the screen completely black, however, `AppleBacklightSmoother` Kext doesn't support this feature yet.
+- Screen light-up after wake, in macOS `Big Sur` 11, a second keyboard click is required to light up the screen, this can be fixed but it will break sleep causing an instant wake.
+- Bluetooth and Sleep don't seem to work in macOS  `Monterey`  12, for now, could be fixed since it's the first `Beta`.
 
 # Requirement 
 - 16GB USB drive 
@@ -78,7 +78,7 @@ OpenCore:
 - If you don't like the name of your laptop that shown in "About This Mac", you can change it! Press Shift+Cmd+G <kbd>⇧⌘G</kbd> and copy-and-paste this path: `/Users/Username/Library/Preferences/com.apple.SystemProfiler.plist`, and remember, the word `Username` Is for your username, now download your favorite plist editor (mine is "PilstEdit Pro"), then you can change to `Lenovo IdeaPad 320-14IKB (80XK)` or any name you want.
 ![](Images/Edit.png)
 ![](Images/About_This_Mac.png)
-- Fn keys don't work usually on most hackintoshes, luckily, `YogaSMC` can fix this! Not just enabling Fn keys and their abilities, it enables Lenovo features like `Conversation Mode` to stop charging the battery at %60 to increase it's age, ture Cycle Count reading because macOS ones can be wrong, `Fn Mode` etc, to get those features, `YogaSMC` is included inside the EFIs, all you have to do is install `YogaSMCNC` app and `YogaSMCPane` which are included in the release.
+- Fn keys don't work usually on most Hackintoshes, luckily, `YogaSMC` can fix this! Not just enabling Fn keys and their abilities, it enables Lenovo features like `Conversation Mode` to stop charging the battery at %60 to increase it's age, ture Cycle Count reading because macOS ones can be wrong, `Fn Mode` etc, to get those features, `YogaSMC` is included inside the EFIs, all you have to do is install `YogaSMCNC` app and `YogaSMCPane` which are included in the release.
 - The keyboard experience on this laptop is a bit different than a real mac, in order to make the closest to a real mac we need to make a couple of changes, luckily, in the latest `VoodooPS2` release, it automatically swaps <kbd>Cmd</kbd> to <kbd>Win</kbd>, if you want to reverse it, use `SSDT-Swap-Alt-Cmd` (or swap them in `System Preferences` as shown in the photo), to prevent <kbd>PrtSc</kbd> from disabling trackpad we need to remap it as <kbd>F13</kbd> (can be remaped to take screenshots and record videos as shown in the photo) and remap <kbd>F6</kbd> as <kbd>PrtSc</kbd> to disable trackpad, to make <kbd>Delete</kbd> key working like a real Mac we need to remap it as <kbd>Backspace</kbd>, `BrightnessKeys` Kext automatically remaps brightness keys without any ACPI requirements, if your brightness keys are <kbd>F11</kbd> and <kbd>F12</kbd>, please remove these two lines using MaciASL which can be found [here](https://github.com/acidanthera/MaciASL) as they are not required and will affect brightness keys in `Fn Mode`, then compile it and replace it, if your brightness keys are <kbd>F14</kbd> and <kbd>F15</kbd>, you're good to go! If you want to use all keyboard patches, there's an SSDT that combines them all which is `SSDT-PS2-Map`, please avoid using all of them to prevent having a `Kernel Panic`.
 ![](Images/Keyboard.png)
 ![](Images/Remap.png)
@@ -110,12 +110,12 @@ OpenCore:
 
 # Credits
 - [Apple](https://www.apple.com) for macOS.
-- [Acidanthera](https://github.com/acidanthera) for most of the kexts.
+- [Acidanthera](https://github.com/acidanthera) for most of the Kexts.
 - [RehabMan](https://github.com/RehabMan) for some ACPI patches.
-- [Steve Zheng](https://github.com/stevezhengshiqi) for some patches.
-- [zhen-zen](https://github.com/zhen-zen) for YogaSMC.
-- [Hiep Bao Le](https://github.com/hieplpvip) for AppleBacklightSmoother
-- [Sniki](https://github.com/Sniki) for some patches.
+- [Steve Zheng](https://github.com/stevezhengshiqi) for some ACPI patches.
+- [zhen-zen](https://github.com/zhen-zen) for YogaSMC project.
+- [Hiep Bao Le](https://github.com/hieplpvip) for AppleBacklightSmoother Kext.
+- [Sniki](https://github.com/Sniki) for some ACPI patches.
 - [daliansky](https://github.com/daliansky) for some ACPI patches.
 - [Moh_Ameen](https://github.com/ameenjuz) for some ACPI patches.
 - [blackosx](https://github.com/blackosx/OpenCanopyIcons) for OpenCanopyIcons theme.
