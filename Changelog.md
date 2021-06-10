@@ -253,6 +253,7 @@
 - Updated `VirtualSMC` Kext and Plug-ins to `1.2.5` to Support macOS 12 `Monterey`
 - Updated `WhateverGreen` Kext to `1.5.1` to Support macOS 12 `Monterey`
 - Updated `YogaSMC` Kext and Plug-ins to `1.5.1`
+- Updated `SSDT-I2C` to remove Bus Speed as they're automatically configured with `VoodooI2C`
 - Updated `OpenCore's` `config.plist` to support `0.7.0` changes
-- Supports macOS 12 `Monterey`
+- Supports macOS 11.4 Big Sur and macOS 12 `Monterey`
 - ### Note: please read the guide again with the new releases as there are major changes you need to be aware of, and Pride Month!
