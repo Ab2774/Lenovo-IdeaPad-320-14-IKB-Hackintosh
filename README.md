@@ -7,10 +7,10 @@ A guide for installing macOS Big Sur on Lenovo IdeaPad 320-14IKB using Clover an
 ![](Images/Laptop.png)
 
 
-# Note 
+## Note 
 I'm not an expert in hackintoshing, this is my first Hackintosh, I managed to get everything working in my laptop, your laptop may be different than mine, higher specifications, dedicated GPU, etc, it's not guaranteed to work a %100, if it's so then this guide may not work for you, be careful and good luck!
 
-# Laptop's Hardware 
+## Laptop's Hardware 
 - <b>CPU</b>: [Intel i5 7200U](https://ark.intel.com/content/www/us/en/ark/products/95443/intel-core-i5-7200u-processor-3m-cache-up-to-3-10-ghz.html) Dual-Core CPU (Kaby Lake-U)
 - <b>GPU</b>: Intel HD 620 Graphics 
 - <b>Storage</b>: 500GB WD Blue Solid State Drive & 2TB Seagate Mobile Hard Drive (Upgraded)
@@ -18,12 +18,12 @@ I'm not an expert in hackintoshing, this is my first Hackintosh, I managed to ge
 - <b>Screen</b>: 13.9-inch Full HD (1920 x 1080)
 - <b>Trackpad</b>: ELAN (I2C)
 - <b>Wi-Fi</b>: Broadcom DW1560 (BCM94352Z) Dual Band M.2 Ngff WiFi Card (Upgraded)
-- <b>Ports</b>: 1 x USB-C, 2 x USB 3.0,USB 2.0 SD Card Reader, HDMI Display Port, Ethernet Port
+- <b>Ports</b>: 1 x USB-C, 2 x USB 3.0, USB 2.0 SD Card Reader, HDMI Display Port, Ethernet Port
 
-# Overview 
+## Overview 
 This laptop is a budget laptop, by these specs, you can't do some heavy work, battery life is around 2-3 hours, It's good but not the best, if you want more you can choose higher specs, but consider that this guide may be different for your hardware.
 
-# What's Working?
+## What's Working?
 - Intel HD 620 Graphics full QE/CI 
 - CPU power management 
 - Battery (Cycles doesn't show properly)
@@ -38,36 +38,39 @@ This laptop is a budget laptop, by these specs, you can't do some heavy work, ba
 - Native macOS Hibernation
 - Screen Brightness with Hotkeys
 - Fn keys and Hotkeys lock
+- FileVault Disk Encryption
 - macOS High Sierra 10.13, Mojave 10.14, Catalina 10.15, Big Sur 11, Monterey 12
 
-# What's Not Working?
-- Apple Pay, requires TouchID, more information [here](https://discussions.apple.com/thread/7808558)
+## What's Not Working?
+- Apple Pay with TouchID, to confirm any purchases you need to type your password instead of using TouchID, more information [here](https://discussions.apple.com/thread/7808558)
 
-# Bugs
+## Bugs
 - DRM support (iTunes Movies, Apple TV+, Amazon Prime and Netflix, and others) could be fixed in the future, more information [here](https://github.com/acidanthera/bugtracker/issues/586) and [here](https://www.tonymacx86.com/threads/an-idiots-guide-to-lilu-and-its-plug-ins.260063/#DRM).
 - No sound if power unplugged or mic is being used after sleep, see https://github.com/Ab2774/Lenovo-IdeaPad-320-14-IKB-Hackintosh/issues/2.
 - Microphone doesn't work on Google Chrome or Firefox, see https://github.com/Ab2774/Lenovo-IdeaPad-320-14-IKB-Hackintosh/issues/3.
-- Lowest brightness, in real Macs, the lowest brightness turns the screen completely black, however, `AppleBacklightSmoother` Kext doesn't support this feature yet.
+- ~Lowest brightness, in real Macs, the lowest brightness turns the screen completely black, however, `AppleBacklightSmoother` Kext doesn't support this feature yet~ Fixed with `enable-backlight-smoother` property.
 - Screen light-up after wake, in macOS `Big Sur` 11, a second keyboard click is required to light up the screen, this can be fixed but it will break sleep causing an instant wake.
-- Bluetooth and Sleep don't seem to work in macOS  `Monterey`  12, for now, could be fixed since it's the first `Beta`.
+- ~Bluetooth and Sleep don't seem to work in macOS `Monterey` 12 (for more information [here]( https://github.com/acidanthera/bugtracker/issues/1676)~ Bluetooth has been fixed with `BlueToolFixup` in `BrcmPatchRAM` v2.6.0, and sleep has been fixed with `1.0.4` release of `CpuTscSync`
+- `RealtekCardReader` and `RealtekCardReaderFriend` Kexts improves the SD Card experience and performance, however, a glitch occurs when inserting an SD Card, causing the SD Card dissappear until plugging it again, could be fixed in future releases.
 
-# Requirement 
+## Requirement 
 - 16GB USB drive 
 - macOS Big Sur image downloaded from the Appstore 
 - ~Mouse, because trackpad won't work in the installation~ Fixed with VoodooI2C v2.4
 
-# BIOS Configuration
-Before doing anything, make sure to update your BIOS to the latest version from [here](https://pcsupport.lenovo.com/us/en/products/laptops-and-netbooks/300-series/320-14ikb/downloads/ds121587), preparing your laptop to macOS, reboot your laptop, when the Lenovo logo appears press <b>F2</b>, when the BIOS menu appears go to: 
-- "Configuration" <b>SATA Controller Mode</b> to <b>AHCI</b>, <b>HotKey Mode</b> to <b>Enabled</b>.
-- "Security" <b>Intel Platform Trust Technology</b> to <b>Disabled</b>, <b>Intel SGX</b> to <b>Disabled</b>, <b>Secure Boot</b> to <b>Disabled</b>.
-- "Boot" <b>Boot Mode</b> to <b>UEFI</b>,<b>Fast Boot</b> to <b>Disabled</b>, <b>USB Boot</b> to <b>Enabled</b>.
-- "Exit" <b>OS Optimized Defaults</b> to <b>Disabled</b>.
+## BIOS Configuration
+Before doing anything, make sure to update your BIOS to the latest version from [here](https://pcsupport.lenovo.com/us/en/products/laptops-and-netbooks/300-series/320-14ikb/downloads/ds121587), preparing your laptop to macOS, reboot your laptop, when the Lenovo logo appears press <kbd>F2</kbd>, when the BIOS menu appears go to: 
+<b>Configuration</b>: `SATA Controller Mode` to `AHCI`, `HotKey Mode` to `Enabled`.
+<b>Security</b>: `Intel Platform Trust Technology` to `Enabled`, `Intel SGX` to `Software Controlled`, `Secure Boot` to `Disabled`.
+<b>Boot</b>: `Boot Mode` to `UEFI`,`Fast Boot` to `Enabled`, `USB Boot` to `Enabled`.
+<b>Exit</b>: `OS Optimized Defaults` to `Disabled`.
+- Note: to install `Windows 11` you need to enable `Secure Boot`  temporarily, once it's done, you can disable it again.
 
-# Installation
+## Installation
 After downloading macOS Big Sur from the AppStore (do not use a distro image like Hackintosh Zone otherwise it's gonna break your system and you won't get any support using it), format your USB drive as "Mac OS Extended (Journaled)", then open Terminal and type: `sudo /Applications/Install\ macOS\ Big\ Sur\.app/Contents/Resources/createinstallmedia --volume /Volumes/MyVolume`, and remember, `MyVolume` is for the name of your USB drive, you can change it if you would, mount the EFI partition in your USB, Copy-and-paste the folder `EFI` from this release's repository, unzip `SMBIOS Generator`, open Terminal and drag-and-drop macserial to the terminal window, then type `--generate-all`  and press<kbd> enter</kbd>, then copy MacBookPro14,1 SMBIOS (which is the closest one to this laptop's hardware) and change it, copy to both Clover's config.plist and OpenCore's config.plist, update your kexts and Clover Bootloader or OpenCore (if a new update is available), reboot your laptop and press `F12` to enter `BIOS Menu`, choose your USB installer and boot from it, you should see the `Clover Boot Menu`, boot from the USB that shown, it may take some time to boot, after is done, you should see `macOS Utilities`, choose `Disk Utility` and erase the drive you want to install macOS on it, click on `Erase` and type the name that you want, like: "Macintosh HD", choose the format as `APFS` and `Scheme` as `GUID Partition Map` and click `Erase`, after it's done, close the window and go back to `macOS Utilities` and choose `Install macOS`, click `Agree` to accept the license agreement, the installation should starts now, your laptop should restarts several times, after it's done, login to your AppleID (for more specific guide please go [here](https://dortania.github.io/oc-laptop-guide/)), after setting up your laptop, unzip the folder, (please delete CodecComannder and ALCPlugFix as they're no longer required with AppleALC 1.5.4), if you have problems with sleep please go [here](https://dortania.github.io/oc-laptop-guide/battery-power-management/correcting-sleep-problems.html)
 restart, and you're ready to go!
 
-# Extras
+## Extras
 - After you finish the installation you'll notice that your iMessage and other Apple services aren't working properly, to fix that issue you have to add `ROM`, `MLB` and a proper SMBIOS (which is MacBookPro14,1 for this device) in your `config.plist`, for more information follow this guide from [here](https://dortania.github.io/OpenCore-Post-Install/universal/iservices.html#fixing-imessage-and-other-services-with-opencore).
 - If you have an SSD installed, you can enable TRIM support on it, just enable this option in your `config.plist` and enjoy! (consider that it may slow booting a bit for APFS formatted SSDs, more information about TRIM [here](https://en.wikipedia.org/wiki/Trim_(computing))
 Clover:
@@ -108,13 +111,14 @@ OpenCore:
 - If you don't like the default Clover you can change it! Search the web and choose your favorite theme, copy-and-paste it to `themes` in `EFI` folder, then go to your `config.plist`, `GUI` section, `Theme` and type the name of your theme, you can use `Clover OSS Theme`, which looks like a real Mac boot-up screen. 
 ![](Images/Theme.png)
 
-# Credits
+## Credits
 - [Apple](https://www.apple.com) for macOS.
 - [Acidanthera](https://github.com/acidanthera) for most of the Kexts.
 - [RehabMan](https://github.com/RehabMan) for some ACPI patches.
 - [Steve Zheng](https://github.com/stevezhengshiqi) for some ACPI patches.
 - [zhen-zen](https://github.com/zhen-zen) for YogaSMC project.
-- [Hiep Bao Le](https://github.com/hieplpvip) for AppleBacklightSmoother Kext.
+- [0xFireWolf](https://github.com/0xFireWolf) for RealtekCardReader and RealtekCardReaderFriend Kexts, and various patches.
+- [1Revenger1](https://github.com/1Revenger1) for ECEnabler Kext.
 - [Sniki](https://github.com/Sniki) for some ACPI patches.
 - [daliansky](https://github.com/daliansky) for some ACPI patches.
 - [Moh_Ameen](https://github.com/ameenjuz) for some ACPI patches.

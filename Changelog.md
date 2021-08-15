@@ -48,7 +48,7 @@
 - Removed `SSDT-USB_kextless` because it's no longer needed
 - Removed `SSDT-EC` because it's no longer needed
 - Removed `SSDT-RMCF` because it's no longer needed
-- Supports macOS Catalina 10.15.4
+- Supports macOS `Catalina` 10.15.4
 
 
 # EFI v1.1.1
@@ -78,7 +78,7 @@
 - Added `Enable TRIM for SSD` in `KextToPatch` in  `config.plist`
 - Added `SSDT-LIP320-14IKB` combining all the patches in one `SSDT` for `Clover` and `OpenCore` Bootloaders
 - Added `SSDT-PLUG`, `SSDT-SBUS` and `SSDT-MCHC` to support `OpenCore` Bootloader
-- Removed `change GFX0 to IGPU`,  `change TPD0._DSM to XDSM` and `change ECWK to XCWK` patches in `config.plist` becuase they're no longer needed
+- Removed `change GFX0 to IGPU`,  `change TPD0._DSM to XDSM` and `change ECWK to XCWK` patches in `config.plist` because they're no longer needed
 - Removed `AddMCHC` in `config.plist` and replaced with `SSDT-MCHC` for `OpenCore` compatibility 
 - Removed `FixSBUS` in `config.plist` and replaced with `SSDT-SBUS` for `OpenCore` compatibility 
 - Removed `VoodooI2CHID.kext` because it's no longer needed
@@ -119,7 +119,7 @@
 - Changed `IgnoreTextInGraphics` value in `Output` in `UEFI` in `OpenCore's` `config.plist` from `YES` to `NO`
 - Changed `Resolution` value in `Output` in `UEFI` in `OpenCore's` `config.plist` from `1920x1080` to `Max`
 - Removed `FwRuntimeServices` and `OcQuirks` Drivers and replaced wiith `AppleGenericInput`, `AppleUiSupport.efi` and `AptioMemoryFix`
-- Supports macOS Catalina 10.15.5
+- Supports macOS `Catalina` 10.15.5
 
 # EFI v1.1.3
 - Updated Clover Bootloader version to `5120`
@@ -139,15 +139,15 @@
 - Updated `SSDT-USB` to work independently without `USBPorts` Kext
 - Updated `SSDT-LIP320-14IKB` due to changes of `SSDT-GPRW`, and `SSDT-USB`
 - Updated all icons as macOS Big Sur style for both `Clover` and `OpenCore`
-- Updated all `Linux` icons as macOS Big Sur style for both `Clover` and `OpenCore` (thanks @blackosx)
+- Updated all `Linux` icons as macOS `Big Sur` style for both `Clover` and `OpenCore` (thanks @blackosx)
 - Updated `OpenCore's` `config.plist` to support `0.6.0` changes
-- Added back `SSDT-EC` to make less renaming patches as possible
+- Added back `SSDT-EC` to make fewer renaming patches as possible
 - Added `SSDT-IRQ` for better compatibility
 - Added `macserial` Tool to generate SMBIOS for new users
 - Added `Rename Method _Q11 to XQ11` and `Rename Method _Q12 to XQ12` Rename Methods to both `Clover` and `OpenCore's` `config.plist`
 - Added `Quirks` section into `Clover's` `config.plist`
 - Added back `MLB` into `Clover's` `config.plist`
-- Added `run-efi-updater` into `OpenCore's` `config.plist` to support macOS Big Sur 11.0
+- Added `run-efi-updater` into `OpenCore's` `config.plist` to support macOS `Big Sur` 11.0
 - Added back `OcQuirks` Driver to `Clover` Bootloader
 - Added `OpenRuntime` Driver to `Clover` Bootloader
 - Fixed typo in `SSDT-ALS0`, `SSDT-DMAC`, `SSDT-KBD`, `SSDT-GPRW`, `SSDT-I2C`, `SSDT-PS2-Map`, `SSDT-MCHC`,  `SSDT-MEM2`, `SSDT-PLUG`, `SSDT-PMCR`, `SSDT-PNLF`, `SSDT-PS2-Map`, `SSDT-PTS`, `SSDT-SBUS`, `SSDT-Swap-Cmd-Alt`, `SSDT USB`, `SSDT-XOSI`, and  `SSDT-LIP320-14IKB`
@@ -159,7 +159,7 @@
 - Removed `AppleGenericInput.efi`, `AppleUiSupport.efi`, and `AppleUiSupport.efi` Drivers from `Clover` Bootloader because they're longer needed
 - Removed `Bootsrap` folder and Driver from `OpenCore` Bootloader because it's no longer needed
 - Removed `NTFS` Driver from both `OpenCore` and `Clover` Bootloaders because it's no longer needed
-- Changed `CsrActiveConfig` value from `0x67` to `0x0877` in `Clover's` `config.plist` to support macOS Big Sur 11.0
+- Changed `CsrActiveConfig` value from `0x67` to `0x0877` in `Clover's` `config.plist` to support macOS `Big Sur` 11.0
 - Changed `RebaseRegions` value from `YES` to `NO` in `Patch` in `ACPI` in `OpenCore's` `config.plist` for better compatibility
 - Changed `ProvideCustomSlide` value from `NO` to `YES` in `Quirks` in `Booter` in `OpenCore's` `config.plist`
 - Changed `CustomSMBIOSGuid` value from `NO` to `YES` in `Quirks` in `Kernel` in `OpenCore's` `config.plist`
@@ -174,7 +174,7 @@
 - Changed `CsrActiveConfig` value from `67000000` to `77080000`  in `NVRAM` in `OpenCore's` `config.plist` to support macOS Big Sur 11.0
 - Changed `UpdateSMBIOSMode` value from `Create` to `Custom` in `SMBIOS` in `OpenCore's` `config.plist`
 - Changed `JumpstartHotPlug` value from `NO` to `YES` in `APFS` `UEFI` in `OpenCore's` `config.plist` to support macOS Big Sur 11.0 Recovery (thanks @stevezhengshiqi)
-- Supports macOS Big Sur 11.0 (`OpenCore` only) & macOS Catalina 10.15.6
+- Supports macOS `Big Sur` 11.0 (`OpenCore` only) & macOS `Catalina` 10.15.6
 
 # EFI v1.1.4
 - Updated Clover Bootloader version to `5122`
@@ -236,7 +236,7 @@
 - Changed `SanitiseClearScreen` value from `YES` to `NO` in `Output` in `UEFI` in `OpenCore's` `config.plist`
 - Changed `AppleSmcIo` value from `NO` to `YES` in `ProtocolOverrides` in `UEFI` in `OpenCore's` `config.plist`
 - Changed `FirmwareVolume` value from `NO` to `YES` in `ProtocolOverrides` in `UEFI` in `OpenCore's` `config.plist`
-- Supports macOS Big Sur 11 (`OpenCore` only) & macOS Catalina 10.15.7
+- Supports macOS `Big Sur` 12 (`OpenCore` only) & macOS `Catalina` 10.15.7
 - ### Note: please read the guide again with the new releases as there are major changes you need to be aware of, and Happy New Year!
 
 # EFI v1.1.6
@@ -255,5 +255,24 @@
 - Updated `YogaSMC` Kext and Plug-ins to `1.5.1`
 - Updated `SSDT-I2C` to remove Bus Speed as they're automatically configured with `VoodooI2C`
 - Updated `OpenCore's` `config.plist` to support `0.7.0` changes
-- Supports macOS 11.4 Big Sur and macOS 12 `Monterey`
-- ### Note: please read the guide again with the new releases as there are major changes you need to be aware of, and Pride Month!
+- Supports macOS `Big Sur` 11.4 and macOS `Monterey` 12
+- ### Note: please read the guide again with the new releases as there are major changes you need to be aware of, and Happy Pride Month!
+
+# EFI v1.1.7
+- Updated Clover Bootloader version to `5138`
+- Updated OpenCore Bootloader version to `0.7.2`
+- Updated `AirportBrcmFixup` Kext to `2.1.3`
+- Updated `AppleALC` Kext to `1.6.3`
+- Updated `CpuTscSync` Kext to `1.0.4` to work properly with macOS 12 `Monterey`
+- Updated `HibernationFixup` Kext to `1.4.2`
+- Updated `Lilu` Kext to `1.5.6`
+- Updated `RestrictEvents` Kext to `1.0.4`
+- Updated `VoodooI2C` Kext and Satellites to `2.6.5`
+- Updated `VirtualSMC` Kext and Plug-ins to `1.2.6`
+- Updated `WhateverGreen` Kext to `1.5.3`
+- Updated `OpenCore's` `config.plist` to support `0.7.2` changes
+- Added `ECEnabler` Kext to eliminate battery ACPI modification
+- Added `RealtekCardReader` and `RealtekCardReaderFriend` Kexts to improve the SD Card experience and performance
+- Removed `AppleBacklightSmoother` Kext and replaced with `enable-backlight-smoother` property for better compatibility
+- Supports macOS `Big Sur` 11.5.1
+- ### Note: for Windows 11 compatibility you need to apply the new changes to the BIOS, remove `AppleBacklightSmoother` and replace it with `enable-backlight-smoother` and other properties from this release, and, if you have any additional ACPI battery patches please remove them as `ECEnabler` Kext patches them automatically, and please read the guide again with the new releases as there are major changes you need to be aware of.
